@@ -38,7 +38,7 @@ export default function Header() {
           <Link href="/" className="flex items-center gap-2 group">
             <FireboltIcon className="h-8 w-8 text-primary transition-transform duration-300 group-hover:scale-110" />
           </Link>
-          <nav className="hidden md:flex items-center gap-1 bg-secondary/50 rounded-full px-4 py-2">
+          <nav className="hidden md:flex items-center gap-2 bg-secondary/50 rounded-full px-4 py-2">
             {navLinks.map((link) => (
               <Link key={link.href} href={link.href} className="font-headline uppercase tracking-wider font-medium text-foreground/70 hover:text-primary transition-colors px-3 py-1 rounded-full hover:bg-background/50">
                 {link.text}
