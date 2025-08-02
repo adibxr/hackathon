@@ -1,3 +1,144 @@
+import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { FireboltIcon } from '@/components/icons';
+import { ShieldCheck, DatabaseZap, Network, Code2, Users, School, Award } from 'lucide-react';
+import Link from 'next/link';
+import Image from 'next/image';
+
+const themes = [
+  {
+    icon: <ShieldCheck className="h-10 w-10 text-primary" />,
+    title: 'DeFi Security',
+    description: 'Innovate solutions to secure decentralized finance platforms from modern cyber threats.',
+  },
+  {
+    icon: <DatabaseZap className="h-10 w-10 text-primary" />,
+    title: 'AI-Powered Threat Detection',
+    description: 'Build AI/ML models that can predict and identify new forms of malware and cyberattacks.',
+  },
+  {
+    icon: <Network className="h-10 w-10 text-primary" />,
+    title: 'IoT & Network Security',
+    description: 'Develop protocols and systems to protect the ever-growing number of IoT devices.',
+  },
+  {
+    icon: <Code2 className="h-10 w-10 text-primary" />,
+    title: 'Secure Development Tools',
+    description: 'Create tools that help developers write more secure code from the start.',
+  },
+];
+
+const collaborators = [
+  { name: 'ASOSE School', logo: 'https://placehold.co/200x100.png', hint: 'university building' },
+  { name: 'DRL', logo: 'https://placehold.co/200x100.png', hint: 'technology logo' },
+];
+
 export default function Home() {
-  return <></>;
+  return (
+    <div className="flex flex-col min-h-screen">
+      <main className="flex-1">
+        {/* Hero Section */}
+        <section className="relative py-24 md:py-32 lg:py-40 bg-cover bg-center" style={{backgroundImage: 'linear-gradient(rgba(255, 242, 230, 0.9), rgba(255, 242, 230, 1)), url(https://placehold.co/1920x1080.png)'}} data-ai-hint="abstract cyber background">
+          <div className="container mx-auto px-4 text-center">
+            <FireboltIcon className="mx-auto h-20 w-20 text-primary animate-pulse" />
+            <h1 className="font-headline text-4xl md:text-6xl lg:text-7xl font-bold tracking-tighter mt-4">
+              Cyber Crackdown
+            </h1>
+            <p className="mt-4 max-w-2xl mx-auto text-lg md:text-xl text-foreground/80">
+              Join the brightest minds to innovate, build, and deploy the next generation of cybersecurity solutions.
+            </p>
+            <div className="mt-8 flex justify-center gap-4">
+              <Button asChild size="lg" className="font-bold text-lg transition-transform duration-300 hover:scale-105">
+                <Link href="/register">Register Now</Link>
+              </Button>
+            </div>
+          </div>
+        </section>
+
+        {/* Themes Section */}
+        <section id="themes" className="py-20 md:py-28 bg-background">
+          <div className="container mx-auto px-4">
+            <h2 className="font-headline text-3xl md:text-4xl font-bold text-center">Hackathon Themes</h2>
+            <p className="mt-4 max-w-2xl mx-auto text-center text-lg text-foreground/70">
+              Choose your challenge. Make your mark.
+            </p>
+            <div className="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+              {themes.map((theme) => (
+                <Card key={theme.title} className="text-center bg-card/80 backdrop-blur-sm transition-all duration-300 hover:shadow-xl hover:-translate-y-2 border-2 border-transparent hover:border-primary/50">
+                  <CardHeader>
+                    <div className="mx-auto w-fit rounded-full bg-primary/10 p-4">
+                      {theme.icon}
+                    </div>
+                    <CardTitle className="font-headline text-2xl font-semibold pt-4">{theme.title}</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-foreground/70">{theme.description}</p>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Prizes Section */}
+        <section id="prizes" className="py-20 md:py-28 bg-secondary/50">
+          <div className="container mx-auto px-4">
+            <h2 className="font-headline text-3xl md:text-4xl font-bold text-center">Prizes & Recognition</h2>
+            <p className="mt-4 max-w-2xl mx-auto text-center text-lg text-foreground/70">
+              Your hard work and innovation will be rewarded.
+            </p>
+            <div className="mt-12 grid gap-8 md:grid-cols-1 lg:grid-cols-2">
+              <Card className="bg-card/80 backdrop-blur-sm transition-all duration-300 hover:shadow-xl hover:-translate-y-2 border-2 border-transparent hover:border-accent/50">
+                <CardHeader className="flex flex-row items-center gap-4">
+                  <Award className="h-10 w-10 text-accent" />
+                  <CardTitle className="font-headline text-2xl font-semibold">Dynamic Cash Prizes</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-foreground/70">
+                    The prize pool grows as more participants register! The top teams will share a significant cash prize, rewarding the most impactful and innovative solutions.
+                  </p>
+                </CardContent>
+              </Card>
+              <Card className="bg-card/80 backdrop-blur-sm transition-all duration-300 hover:shadow-xl hover:-translate-y-2 border-2 border-transparent hover:border-accent/50">
+                <CardHeader className="flex flex-row items-center gap-4">
+                   <School className="h-10 w-10 text-accent" />
+                  <CardTitle className="font-headline text-2xl font-semibold">Credential Certificates</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-foreground/70">
+                    All participants will receive a verifiable digital certificate of completion, in collaboration with ASOSE School and DRL, recognizing your skills and participation in this premier event.
+                  </p>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+        </section>
+
+        {/* Collaborators Section */}
+        <section id="collaborators" className="py-20 md:py-28 bg-background">
+          <div className="container mx-auto px-4">
+            <h2 className="font-headline text-3xl md:text-4xl font-bold text-center">Our Collaborators</h2>
+            <p className="mt-4 max-w-2xl mx-auto text-center text-lg text-foreground/70">
+              Proudly supported by leading institutions in education and technology.
+            </p>
+            <div className="mt-12 flex flex-wrap justify-center items-center gap-8 md:gap-16">
+              {collaborators.map((c) => (
+                <div key={c.name} className="flex flex-col items-center gap-2">
+                   <Image 
+                     src={c.logo} 
+                     alt={`${c.name} logo`} 
+                     width={160} 
+                     height={80} 
+                     className="object-contain grayscale transition-all duration-300 hover:grayscale-0"
+                     data-ai-hint={c.hint}
+                   />
+                   <p className="font-semibold text-foreground/80">{c.name}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+  );
 }
