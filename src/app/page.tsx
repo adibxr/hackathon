@@ -4,6 +4,7 @@ import { FireboltIcon } from '@/components/icons';
 import { Users, School, Award, Eye, Wifi, Target, Calendar, ClipboardCheck, Trophy, Briefcase, Code, LineChart, Github, Twitter, Mail } from 'lucide-react';
 import Link from 'next/link';
 import CollaboratorsSection from '@/components/collaborators-section';
+import TypingAnimation from '@/components/typing-animation';
 
 const stats = [
     { icon: <Users className="h-10 w-10 text-primary" />, value: '1,200+', label: 'Registered Users' },
@@ -86,13 +87,14 @@ export default function Home() {
     <div className="flex flex-col min-h-screen">
       <main className="flex-1">
         {/* Hero Section */}
-        <section className="relative py-24 md:py-32 lg:py-40 bg-cover bg-center" style={{backgroundImage: 'linear-gradient(rgba(255, 242, 230, 0.9), rgba(255, 242, 230, 1)), url(https://placehold.co/1920x1080.png)'}} data-ai-hint="abstract cyber background">
+        <section className="relative py-24 md:py-32 lg:py-40 bg-cover bg-center" style={{backgroundImage: 'linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.9)), url(https://placehold.co/1920x1080.png)'}} data-ai-hint="abstract cyber background">
           <div className="container mx-auto px-4 text-center">
             <FireboltIcon className="mx-auto h-20 w-20 text-primary animate-pulse" />
-            <h1 className="font-headline text-4xl md:text-6xl lg:text-7xl font-bold tracking-tighter mt-4">
+            <h1 className="font-headline text-4xl md:text-6xl lg:text-7xl font-bold tracking-tighter mt-4 text-white">
               Cyber Crackdown
             </h1>
-            <p className="mt-4 max-w-2xl mx-auto text-lg md:text-xl text-foreground/80">
+            <TypingAnimation text="Hey! its time to code" />
+            <p className="mt-4 max-w-2xl mx-auto text-lg md:text-xl text-slate-300">
               Join the brightest minds to innovate, build, and deploy the next generation of cybersecurity solutions.
             </p>
             <div className="mt-8 flex justify-center gap-4">

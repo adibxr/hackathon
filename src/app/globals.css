@@ -81,4 +81,16 @@
   body {
     @apply bg-background text-foreground;
   }
+  .typing-cursor {
+    animation: blink 1s step-end infinite;
+  }
+
+  @keyframes blink {
+    from, to {
+      color: transparent;
+    }
+    50% {
+      color: hsl(var(--primary));
+    }
+  }
 }
