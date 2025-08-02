@@ -13,8 +13,6 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip"
-import { Calendar } from '@/components/ui/calendar';
-import { useState } from 'react';
 
 const collaborators = [
   { 
@@ -38,7 +36,6 @@ const stats = [
 ]
 
 export default function Home() {
-  const [date, setDate] = useState<Date | undefined>(new Date())
   return (
     <div className="flex flex-col min-h-screen">
       <main className="flex-1">
@@ -128,27 +125,17 @@ export default function Home() {
           </div>
         </section>
         
-        {/* Stats and Calendar Section */}
+        {/* Stats Section */}
         <section id="engagement" className="py-20 md:py-28 bg-secondary/50">
           <div className="container mx-auto px-4">
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 text-center">
-                  {stats.map((stat, index) => (
-                    <div key={index} className="bg-card/80 p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
-                      {stat.icon}
-                      <p className="text-3xl font-bold mt-2">{stat.value}</p>
-                      <p className="text-muted-foreground mt-1">{stat.label}</p>
-                    </div>
-                  ))}
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 text-center max-w-4xl mx-auto">
+              {stats.map((stat, index) => (
+                <div key={index} className="bg-card/80 p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+                  {stat.icon}
+                  <p className="text-3xl font-bold mt-2">{stat.value}</p>
+                  <p className="text-muted-foreground mt-1">{stat.label}</p>
                 </div>
-                <div className="flex justify-center">
-                    <Calendar
-                        mode="single"
-                        selected={date}
-                        onSelect={setDate}
-                        className="rounded-md border bg-card/80 shadow-lg"
-                    />
-                </div>
+              ))}
             </div>
           </div>
         </section>
