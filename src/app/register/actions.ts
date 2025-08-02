@@ -1,6 +1,7 @@
 'use server';
 
 import { sendEmail } from '@/ai/flows/send-email-flow';
+import type { EmailData } from '@/ai/schemas';
 import * as z from 'zod';
 
 const registerSchema = z.object({

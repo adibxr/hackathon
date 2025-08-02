@@ -3,15 +3,7 @@
 import { ai } from '@/ai/genkit';
 import { z } from 'zod';
 import nodemailer from 'nodemailer';
-
-export const EmailSchema = z.object({
-  to: z.string(),
-  subject: z.string(),
-  text: z.string(),
-  html: z.string(),
-});
-
-export type EmailData = z.infer<typeof EmailSchema>;
+import { EmailSchema, type EmailData } from '@/ai/schemas';
 
 // IMPORTANT: You must configure your email provider credentials in your environment.
 // For example, using Gmail, you would set GMAIL_USER and GMAIL_PASS.
