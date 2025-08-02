@@ -39,7 +39,6 @@ export default function Header() {
       )}>
         <Link href="/" className="flex items-center gap-2 group">
           <FireboltIcon className="h-8 w-8 text-primary transition-transform duration-300 group-hover:scale-110" />
-          <span className="font-headline text-2xl font-bold tracking-tight">Cyber Crackdown</span>
         </Link>
         <nav className="hidden md:flex items-center gap-6">
           {navLinks.map((link) => (
@@ -63,7 +62,6 @@ export default function Header() {
               <div className="flex flex-col gap-6 pt-10">
                 <Link href="/" className="flex items-center gap-2 group mb-4" onClick={() => setIsMobileMenuOpen(false)}>
                   <FireboltIcon className="h-8 w-8 text-primary" />
-                  <span className="font-headline text-2xl font-bold">Cyber Crackdown</span>
                 </Link>
                 {navLinks.map((link) => (
                   <Link key={link.href} href={link.href} className="font-medium text-lg text-foreground/80 hover:text-primary transition-colors" onClick={() => setIsMobileMenuOpen(false)}>
