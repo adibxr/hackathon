@@ -42,7 +42,7 @@ export default function Header() {
         </Link>
         <nav className="hidden md:flex items-center gap-6">
           {navLinks.map((link) => (
-            <Link key={link.href} href={link.href} className="font-medium text-foreground/70 hover:text-primary transition-colors">
+            <Link key={link.href} href={link.href} className="font-headline uppercase tracking-wider font-medium text-foreground/70 hover:text-primary transition-colors">
               {link.text}
             </Link>
           ))}
@@ -64,7 +64,7 @@ export default function Header() {
                   <FireboltIcon className="h-8 w-8 text-primary" />
                 </Link>
                 {navLinks.map((link) => (
-                  <Link key={link.href} href={link.href} className="font-medium text-lg text-foreground/80 hover:text-primary transition-colors" onClick={() => setIsMobileMenuOpen(false)}>
+                  <Link key={link.href} href={link.href} className="font-headline uppercase tracking-wider font-medium text-lg text-foreground/80 hover:text-primary transition-colors" onClick={() => setIsMobileMenuOpen(false)}>
                     {link.text}
                   </Link>
                 ))}
