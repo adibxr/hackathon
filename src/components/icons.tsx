@@ -12,7 +12,7 @@ export function FireboltIcon(props: SVGProps<SVGSVGElement>) {
       strokeLinejoin="round"
       {...props}
     >
-      <path d="M13 3l- instituições-4 9h5l-10 11 4-9H7l6-11z" />
+      <path d="M13 3l-4 9h5l-10 11 4-9H7l6-11z" />
     </svg>
   );
 }
