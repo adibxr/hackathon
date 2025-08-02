@@ -1,5 +1,6 @@
 'use server';
 
+import { sendEmail } from '@/ai/flows/send-email-flow';
 import * as z from 'zod';
 
 const registerSchema = z.object({
@@ -22,22 +23,27 @@ export async function registerUser(data: RegistrationData): Promise<{ success: b
     return { success: false, error: 'Invalid data provided. Please check the form.' };
   }
 
-  // In a real application, you would use a service like Nodemailer, Resend, or SendGrid
-  // to send an email. This requires setting up API keys and transport configurations.
-  // For this example, we will simulate the action by logging the data to the console.
-  
-  console.log('--- New Hackathon Registration ---');
-  console.log(`Name: ${result.data.name}`);
-  console.log(`Email: ${result.data.email}`);
-  console.log(`Mobile: ${result.data.mobile}`);
-  console.log(`City: ${result.data.city}`);
-  console.log(`GitHub: ${result.data.github || 'Not provided'}`);
-  console.log(`Resume URL: ${result.data.resume || 'Not provided'}`);
-  console.log('--- Registration Data Sent to ccidcop@gmail.com (Simulated) ---');
+  try {
+    const emailContent = `
+      New Hackathon Registration:
+      Name: ${result.data.name}
+      Email: ${result.data.email}
+      Mobile: ${result.data.mobile}
+      City: ${result.data.city}
+      GitHub: ${result.data.github || 'N/A'}
+      Resume: ${result.data.resume || 'N/A'}
+    `;
 
-  // Simulate a network delay
-  await new Promise(resolve => setTimeout(resolve, 1000));
+    await sendEmail({
+      to: 'ccidcop@gmail.com',
+      subject: `New Registration from ${result.data.name}`,
+      text: emailContent,
+      html: `<p>${emailContent.replace(/\n/g, '<br>')}</p>`,
+    });
 
-  // Always return success for this simulation
-  return { success: true };
+    return { success: true };
+  } catch (error) {
+    console.error('Failed to send registration email:', error);
+    return { success: false, error: 'There was a problem submitting your registration.' };
+  }
 }
