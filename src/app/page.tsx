@@ -64,26 +64,20 @@ const socialLinks = [
     {
         name: 'GitHub',
         icon: <Github className="h-8 w-8 text-primary" />,
-        href: 'https://github.com',
+        href: 'https://github.com/adibxr',
         handle: 'Contribute on GitHub'
     },
     {
         name: 'Gmail',
         icon: <Mail className="h-8 w-8 text-primary" />,
-        href: 'mailto:example@gmail.com',
+        href: 'mailto:admin@immortaladi.live',
         handle: 'Email Us'
     },
     {
         name: 'Twitter',
         icon: <Twitter className="h-8 w-8 text-primary" />,
-        href: 'https://twitter.com',
+        href: 'https://x.com/cybercrack',
         handle: 'Follow on X'
-    },
-    {
-        name: 'Discord',
-        icon: <DiscordIcon className="h-8 w-8 text-primary" />,
-        href: 'https://discord.com',
-        handle: 'Join our Community'
     },
 ]
 
@@ -235,7 +229,7 @@ export default function Home() {
                 <h2 className="font-headline text-3xl md:text-4xl font-bold text-center mb-12">
                     Connect With Us
                 </h2>
-                <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+                <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
                     {socialLinks.map((link) => (
                         <Link href={link.href} key={link.name} target="_blank" rel="noopener noreferrer">
                             <Card  className="bg-card/80 backdrop-blur-sm transition-all duration-300 hover:shadow-xl hover:-translate-y-2 border-2 border-transparent hover:border-primary/30 h-full">
