@@ -1,8 +1,7 @@
 import type {Metadata} from 'next';
 import './globals.css';
 import { Toaster } from "@/components/ui/toaster"
-import Header from '@/components/header';
-import Footer from '@/components/footer';
+import PageWrapper from '@/components/layout/page-wrapper';
 
 export const metadata: Metadata = {
   title: 'Cyber Crackdown Hub',
@@ -22,11 +21,7 @@ export default function RootLayout({
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet"></link>
       </head>
       <body className="font-body antialiased">
-        <div className="relative flex min-h-screen flex-col">
-          <Header />
-          <main className="flex-1">{children}</main>
-          <Footer />
-        </div>
+        <PageWrapper>{children}</PageWrapper>
         <Toaster />
       </body>
     </html>
