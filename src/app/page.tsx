@@ -1,6 +1,6 @@
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { FireboltIcon, DiscordIcon } from '@/components/icons';
+import { FireboltIcon } from '@/components/icons';
 import { Users, School, Award, Eye, Wifi, Target, Calendar, ClipboardCheck, Trophy, Briefcase, Code, LineChart, Github, Twitter, Mail } from 'lucide-react';
 import Link from 'next/link';
 import CollaboratorsSection from '@/components/collaborators-section';
@@ -233,7 +233,7 @@ export default function Home() {
                     {socialLinks.map((link) => (
                         <Link href={link.href} key={link.name} target="_blank" rel="noopener noreferrer">
                             <Card  className="bg-card/80 backdrop-blur-sm transition-all duration-300 hover:shadow-xl hover:-translate-y-2 border-2 border-transparent hover:border-primary/30 h-full">
-                                <CardContent className="p-6 flex flex-col items-center justify-center text-center">
+                                <CardContent className="p-6 flex flex-col items-center justify-center text-center h-full">
                                     {link.icon}
                                     <h3 className="mt-4 font-bold text-xl">{link.name}</h3>
                                     <p className="text-muted-foreground">{link.handle}</p>
