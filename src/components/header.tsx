@@ -30,7 +30,7 @@ export default function Header() {
   return (
     <header className={cn(
       "sticky top-0 z-50 transition-all duration-300",
-      isScrolled ? "bg-background/80 backdrop-blur-lg border-b border-border" : "bg-transparent",
+      isScrolled ? "bg-background/80 backdrop-blur-lg border-b-[3px] border-black" : "bg-transparent",
       isScrolled && "md:top-4 md:container md:mx-auto md:px-4 md:rounded-full"
     )}>
       <div className={cn(
