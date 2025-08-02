@@ -31,8 +31,8 @@ export default function Header() {
   return (
     <header className="sticky top-4 z-50 mx-auto max-w-5xl">
       <div className={cn(
-        "transition-all duration-300 rounded-full border-border shadow-md",
-        isScrolled ? "bg-background/80 backdrop-blur-lg border" : "bg-background border",
+        "transition-all duration-300 rounded-full border-border shadow-md backdrop-blur-lg border",
+        isScrolled ? "bg-background/80" : "bg-background/50",
       )}>
         <div className="container mx-auto px-4 h-20 flex items-center justify-between">
           <Link href="/" className="flex items-center gap-2 group">
