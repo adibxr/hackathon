@@ -1,7 +1,7 @@
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { FireboltIcon } from '@/components/icons';
-import { Users, School, Award, Eye, Wifi, Target, Calendar, ClipboardCheck, Trophy, Briefcase, Code, LineChart } from 'lucide-react';
+import { FireboltIcon, DiscordIcon } from '@/components/icons';
+import { Users, School, Award, Eye, Wifi, Target, Calendar, ClipboardCheck, Trophy, Briefcase, Code, LineChart, Github, Twitter, Mail } from 'lucide-react';
 import Link from 'next/link';
 import CollaboratorsSection from '@/components/collaborators-section';
 
@@ -59,6 +59,33 @@ const taskDetails = {
         },
     ]
 }
+
+const socialLinks = [
+    {
+        name: 'GitHub',
+        icon: <Github className="h-8 w-8 text-primary" />,
+        href: 'https://github.com',
+        handle: 'Contribute on GitHub'
+    },
+    {
+        name: 'Gmail',
+        icon: <Mail className="h-8 w-8 text-primary" />,
+        href: 'mailto:example@gmail.com',
+        handle: 'Email Us'
+    },
+    {
+        name: 'Twitter',
+        icon: <Twitter className="h-8 w-8 text-primary" />,
+        href: 'https://twitter.com',
+        handle: 'Follow on X'
+    },
+    {
+        name: 'Discord',
+        icon: <DiscordIcon className="h-8 w-8 text-primary" />,
+        href: 'https://discord.com',
+        handle: 'Join our Community'
+    },
+]
 
 export default function Home() {
   return (
@@ -197,6 +224,30 @@ export default function Home() {
                   <p className="text-muted-foreground mt-1">{stat.label}</p>
                 </div>
               ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Connect Us Section */}
+        <section id="connect" className="py-20 md:py-28 bg-background">
+          <div className="container mx-auto px-4">
+            <div className="max-w-5xl mx-auto">
+                <h2 className="font-headline text-3xl md:text-4xl font-bold text-center mb-12">
+                    Connect With Us
+                </h2>
+                <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+                    {socialLinks.map((link) => (
+                        <Link href={link.href} key={link.name} target="_blank" rel="noopener noreferrer">
+                            <Card  className="bg-card/80 backdrop-blur-sm transition-all duration-300 hover:shadow-xl hover:-translate-y-2 border-2 border-transparent hover:border-primary/30 h-full">
+                                <CardContent className="p-6 flex flex-col items-center justify-center text-center">
+                                    {link.icon}
+                                    <h3 className="mt-4 font-bold text-xl">{link.name}</h3>
+                                    <p className="text-muted-foreground">{link.handle}</p>
+                                </CardContent>
+                            </Card>
+                        </Link>
+                    ))}
+                </div>
             </div>
           </div>
         </section>
