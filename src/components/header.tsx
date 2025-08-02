@@ -5,7 +5,7 @@ import { Button } from './ui/button';
 import { FireboltIcon } from './icons';
 import { cn } from '@/lib/utils';
 import { useState, useEffect } from 'react';
-import { Menu } from 'lucide-react';
+import { Menu, UserPlus } from 'lucide-react';
 import { Sheet, SheetContent, SheetTrigger } from './ui/sheet';
 
 export default function Header() {
@@ -46,8 +46,11 @@ export default function Header() {
             ))}
           </nav>
           <div className="flex items-center gap-2">
-            <Button asChild className="hidden md:flex transition-transform duration-300 hover:scale-105 rounded-full">
-              <Link href="/register">Register Now</Link>
+            <Button asChild size="icon" className="hidden md:flex rounded-full transition-transform duration-300 hover:scale-110">
+              <Link href="/register">
+                <UserPlus className="h-5 w-5" />
+                <span className="sr-only">Register Now</span>
+              </Link>
             </Button>
             <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
               <SheetTrigger asChild className="md:hidden">
@@ -67,7 +70,10 @@ export default function Header() {
                     </Link>
                   ))}
                   <Button asChild size="lg" className="mt-6" onClick={() => setIsMobileMenuOpen(false)}>
-                     <Link href="/register">Register Now</Link>
+                     <Link href="/register">
+                       <UserPlus className="mr-2 h-5 w-5" />
+                       Register Now
+                     </Link>
                   </Button>
                 </div>
               </SheetContent>
