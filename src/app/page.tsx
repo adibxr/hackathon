@@ -1,3 +1,5 @@
+'use client';
+
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { FireboltIcon } from '@/components/icons';
@@ -5,6 +7,7 @@ import { Users, School, Award, Eye, Wifi, Target, Calendar, ClipboardCheck, Trop
 import Link from 'next/link';
 import CollaboratorsSection from '@/components/collaborators-section';
 import TypingAnimation from '@/components/typing-animation';
+import { useEffect, useState } from 'react';
 
 const stats = [
     { icon: <Users className="h-10 w-10 text-primary" />, value: '1,200+', label: 'Registered Users' },
@@ -83,14 +86,20 @@ const socialLinks = [
 ]
 
 export default function Home() {
+  const [animate, setAnimate] = useState(false);
+
+  useEffect(() => {
+    setAnimate(true);
+  }, []);
+
   return (
     <div className="flex flex-col min-h-screen">
       <main className="flex-1">
         {/* Hero Section */}
-        <section className="relative py-24 md:py-32 lg:py-40 bg-cover bg-center" style={{backgroundImage: 'linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.9)), url(https://placehold.co/1920x1080.png)'}} data-ai-hint="abstract cyber background">
+        <section className="relative py-24 md:py-32 lg:py-40 bg-cover bg-center" style={{backgroundImage: 'linear-gradient(to bottom, #111, #000)'}}>
           <div className="container mx-auto px-4 text-center">
-            <FireboltIcon className="mx-auto h-20 w-20 text-primary animate-pulse" />
-            <h1 className="font-headline text-4xl md:text-6xl lg:text-7xl font-bold tracking-tighter mt-4 text-white">
+            <FireboltIcon className={`mx-auto h-20 w-20 text-primary animate-pulse ${animate ? 'animate-strike' : ''}`} />
+            <h1 className={`font-headline text-4xl md:text-6xl lg:text-7xl font-bold tracking-tighter mt-4 text-white ${animate ? 'animate-fall' : ''}`}>
               Cyber Crackdown
             </h1>
             <TypingAnimation text="Hey! its time to code" />
