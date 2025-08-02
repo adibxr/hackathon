@@ -11,29 +11,6 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip"
 
-const themes = [
-  {
-    icon: <ShieldCheck className="h-10 w-10 text-primary" />,
-    title: 'DeFi Security',
-    description: 'Innovate solutions to secure decentralized finance platforms from modern cyber threats.',
-  },
-  {
-    icon: <DatabaseZap className="h-10 w-10 text-primary" />,
-    title: 'AI-Powered Threat Detection',
-    description: 'Build AI/ML models that can predict and identify new forms of malware and cyberattacks.',
-  },
-  {
-    icon: <Network className="h-10 w-10 text-primary" />,
-    title: 'IoT & Network Security',
-    description: 'Develop protocols and systems to protect the ever-growing number of IoT devices.',
-  },
-  {
-    icon: <Code2 className="h-10 w-10 text-primary" />,
-    title: 'Secure Development Tools',
-    description: 'Create tools that help developers write more secure code from the start.',
-  },
-];
-
 const collaborators = [
   { 
     name: 'ASOSE School', 
@@ -71,31 +48,6 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Themes Section */}
-        <section id="themes" className="py-20 md:py-28 bg-background">
-          <div className="container mx-auto px-4">
-            <h2 className="font-headline text-3xl md:text-4xl font-bold text-center">Hackathon Themes</h2>
-            <p className="mt-4 max-w-2xl mx-auto text-center text-lg text-foreground/70">
-              Choose your challenge. Make your mark.
-            </p>
-            <div className="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-4">
-              {themes.map((theme) => (
-                <Card key={theme.title} className="text-center bg-card/80 backdrop-blur-sm transition-all duration-300 hover:shadow-xl hover:-translate-y-2 border-2 border-transparent hover:border-primary/50">
-                  <CardHeader>
-                    <div className="mx-auto w-fit rounded-full bg-primary/10 p-4">
-                      {theme.icon}
-                    </div>
-                    <CardTitle className="font-headline text-2xl font-semibold pt-4">{theme.title}</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-foreground/70">{theme.description}</p>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </div>
-        </section>
-
         {/* Prizes Section */}
         <section id="prizes" className="py-20 md:py-28 bg-secondary/50">
           <div className="container mx-auto px-4">
@@ -122,7 +74,7 @@ export default function Home() {
                 </CardHeader>
                 <CardContent>
                   <p className="text-foreground/70">
-                    All participants will receive a verifiable digital certificate of completion, in collaboration with ASOSE School and DRL, recognizing your skills and participation in this premier event.
+                    All participants will receive a verifiable digital certificate of completion, in collaboration with ASOSE School and IHFC, recognizing your skills and participation in this premier event.
                   </p>
                 </CardContent>
               </Card>

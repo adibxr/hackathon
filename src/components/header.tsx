@@ -21,7 +21,7 @@ export default function Header() {
   }, []);
 
   const navLinks = [
-    { href: '/#themes', text: 'Themes' },
+    { href: '/task', text: 'Task' },
     { href: '/#prizes', text: 'Prizes' },
     { href: '/#collaborators', text: 'Collaborators' },
     { href: '/rules', text: 'Rules' },
