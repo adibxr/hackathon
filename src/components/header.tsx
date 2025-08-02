@@ -29,14 +29,10 @@ export default function Header() {
 
   return (
     <header className={cn(
-      "sticky top-0 z-50 transition-all duration-300",
-      isScrolled ? "bg-background/80 backdrop-blur-lg border-b-[3px] border-black" : "bg-transparent",
-      isScrolled && "md:top-4 md:container md:mx-auto md:px-4 md:rounded-full"
+      "sticky top-0 z-50 transition-colors duration-300",
+      isScrolled ? "bg-background/80 backdrop-blur-lg border-b" : "bg-transparent",
     )}>
-      <div className={cn(
-        "container mx-auto px-4 h-20 flex items-center justify-between",
-        isScrolled && "md:h-16"
-      )}>
+      <div className="container mx-auto px-4 h-20 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-2 group">
           <FireboltIcon className="h-8 w-8 text-primary transition-transform duration-300 group-hover:scale-110" />
         </Link>
