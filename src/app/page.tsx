@@ -1,7 +1,10 @@
+
+'use client';
+
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { FireboltIcon } from '@/components/icons';
-import { ShieldCheck, DatabaseZap, Network, Code2, Users, School, Award } from 'lucide-react';
+import { ShieldCheck, DatabaseZap, Network, Code2, Users, School, Award, Eye, Wifi } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
 import {
@@ -10,6 +13,8 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip"
+import { Calendar } from '@/components/ui/calendar';
+import { useState } from 'react';
 
 const collaborators = [
   { 
@@ -26,7 +31,14 @@ const collaborators = [
   },
 ];
 
+const stats = [
+    { icon: <Users className="h-10 w-10 text-primary" />, value: '1,200+', label: 'Registered Users' },
+    { icon: <Eye className="h-10 w-10 text-primary" />, value: '15,000+', label: 'Total Visitors' },
+    { icon: <Wifi className="h-10 w-10 text-primary" />, value: '250+', label: 'Live Users' },
+]
+
 export default function Home() {
+  const [date, setDate] = useState<Date | undefined>(new Date())
   return (
     <div className="flex flex-col min-h-screen">
       <main className="flex-1">
@@ -115,6 +127,32 @@ export default function Home() {
             </TooltipProvider>
           </div>
         </section>
+        
+        {/* Stats and Calendar Section */}
+        <section id="engagement" className="py-20 md:py-28 bg-secondary/50">
+          <div className="container mx-auto px-4">
+            <div className="grid lg:grid-cols-2 gap-12 items-center">
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 text-center">
+                  {stats.map((stat, index) => (
+                    <div key={index} className="bg-card/80 p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+                      {stat.icon}
+                      <p className="text-3xl font-bold mt-2">{stat.value}</p>
+                      <p className="text-muted-foreground mt-1">{stat.label}</p>
+                    </div>
+                  ))}
+                </div>
+                <div className="flex justify-center">
+                    <Calendar
+                        mode="single"
+                        selected={date}
+                        onSelect={setDate}
+                        className="rounded-md border bg-card/80 shadow-lg"
+                    />
+                </div>
+            </div>
+          </div>
+        </section>
+
       </main>
     </div>
   );
