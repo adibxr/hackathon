@@ -1,6 +1,15 @@
+'use client';
+
 import { FireboltIcon } from './icons';
+import { useEffect, useState } from 'react';
 
 export default function Footer() {
+  const [year, setYear] = useState(new Date().getFullYear());
+
+  useEffect(() => {
+    setYear(new Date().getFullYear());
+  }, []);
+
   return (
     <footer className="bg-secondary/50 border-t border-border">
       <div className="container mx-auto px-4 py-6 flex flex-col sm:flex-row justify-between items-center">
@@ -9,7 +18,7 @@ export default function Footer() {
           <p className="text-sm font-semibold">Cyber Crackdown</p>
         </div>
         <p className="text-sm text-foreground/60 mt-4 sm:mt-0">
-          © {new Date().getFullYear()} Cyber Crackdown. All rights reserved.
+          © {year} Cyber Crackdown. All rights reserved.
         </p>
       </div>
     </footer>
