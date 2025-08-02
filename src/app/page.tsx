@@ -112,7 +112,7 @@ export default function Home() {
     <div className="flex flex-col min-h-screen">
       <main className="flex-1">
         {/* Hero Section */}
-        <section className="relative py-24 md:py-32 lg:py-40 bg-cover bg-center" style={{backgroundImage: 'linear-gradient(to bottom, #111, #000)'}}>
+        <section className="relative py-24 md:py-32 lg:py-40 bg-cover bg-center" style={{backgroundImage: 'linear-gradient(to bottom, hsl(240 10% 7%), hsl(240 10% 3.9%))'}}>
           <div className="container mx-auto px-4 text-center">
             <FireboltIcon 
               className={`mx-auto h-20 w-20 text-primary transition-opacity duration-300 ${startAnimation ? 'animate-strike' : 'animate-pulse'}`}
@@ -281,5 +281,3 @@ export default function Home() {
     </div>
   );
 }
-
-    
