@@ -89,7 +89,6 @@ export default function Home() {
   const [startAnimation, setStartAnimation] = useState(false);
   const [isStruck, setIsStruck] = useState(false);
   const [isFalling, setIsFalling] = useState(false);
-  const [animationComplete, setAnimationComplete] = useState(false);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -108,12 +107,6 @@ export default function Home() {
     }
   };
 
-  const handleFallAnimationEnd = (event: React.AnimationEvent) => {
-    if (event.animationName === 'fall') {
-      setAnimationComplete(true);
-    }
-  };
-
   return (
     <div className="flex flex-col min-h-screen">
       <main className="flex-1">
@@ -121,12 +114,11 @@ export default function Home() {
         <section className="relative py-24 md:py-32 lg:py-40 bg-cover bg-center" style={{backgroundImage: 'linear-gradient(to bottom, #111, #000)'}}>
           <div className="container mx-auto px-4 text-center">
             <FireboltIcon 
-              className={`mx-auto h-20 w-20 text-primary transition-opacity duration-300 ${startAnimation && !animationComplete ? 'animate-strike' : ''} ${animationComplete ? 'opacity-100' : 'animate-pulse'}`}
+              className={`mx-auto h-20 w-20 text-primary transition-opacity duration-300 ${startAnimation ? 'animate-strike' : 'animate-pulse'}`}
               onAnimationEnd={handleStrikeAnimationEnd}
             />
             <h1 
-              className={`font-headline text-4xl md:text-6xl lg:text-7xl font-bold tracking-tighter mt-4 text-white ${isFalling ? 'animate-fall' : ''}`}
-              onAnimationEnd={handleFallAnimationEnd}
+              className={`font-headline text-4xl md:text-6xl lg:text-7xl font-bold tracking-tighter mt-4 text-white ${isFalling ? 'animate-fall' : ''} ${isStruck ? 'text-primary' : ''}`}
             >
               Cyber Crackdown
             </h1>
