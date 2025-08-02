@@ -37,6 +37,9 @@ export default function Header() {
           <Link href="/#collaborators" className="font-medium text-foreground/70 hover:text-primary transition-colors">
             Collaborators
           </Link>
+          <Link href="/rules" className="font-medium text-foreground/70 hover:text-primary transition-colors">
+            Rules
+          </Link>
         </nav>
         <Button asChild className="hidden md:flex transition-transform duration-300 hover:scale-105">
           <Link href="/register">Register Now</Link>
