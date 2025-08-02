@@ -86,11 +86,21 @@ const socialLinks = [
 ]
 
 export default function Home() {
-  const [animate, setAnimate] = useState(false);
+  const [startAnimation, setStartAnimation] = useState(false);
+  const [isStruck, setIsStruck] = useState(false);
 
   useEffect(() => {
-    setAnimate(true);
+    const timer = setTimeout(() => {
+        setStartAnimation(true);
+    }, 500);
+    return () => clearTimeout(timer);
   }, []);
+
+  const handleAnimationEnd = (event: React.AnimationEvent) => {
+    if (event.animationName === 'strike') {
+      setIsStruck(true);
+    }
+  };
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -98,8 +108,11 @@ export default function Home() {
         {/* Hero Section */}
         <section className="relative py-24 md:py-32 lg:py-40 bg-cover bg-center" style={{backgroundImage: 'linear-gradient(to bottom, #111, #000)'}}>
           <div className="container mx-auto px-4 text-center">
-            <FireboltIcon className={`mx-auto h-20 w-20 text-primary animate-pulse ${animate ? 'animate-strike' : ''}`} />
-            <h1 className={`font-headline text-4xl md:text-6xl lg:text-7xl font-bold tracking-tighter mt-4 text-white ${animate ? 'animate-fall' : ''}`}>
+            <FireboltIcon 
+              className={`mx-auto h-20 w-20 text-primary ${startAnimation ? 'animate-strike' : 'animate-pulse'}`} 
+              onAnimationEnd={handleAnimationEnd}
+            />
+            <h1 className={`font-headline text-4xl md:text-6xl lg:text-7xl font-bold tracking-tighter mt-4 text-white ${isStruck ? 'animate-fall' : ''}`}>
               Cyber Crackdown
             </h1>
             <TypingAnimation text="Hey! its time to code" />
