@@ -46,32 +46,34 @@ export default function RulesPage() {
     return (
         <div className="bg-background">
             <div className="container mx-auto px-4 py-16 md:py-24">
-                <div className="text-center mb-12">
-                    <Scale className="mx-auto h-16 w-16 text-primary" />
-                    <h1 className="font-headline text-4xl md:text-5xl font-bold tracking-tighter mt-4">
-                        Hackathon Rules & Guidelines
-                    </h1>
-                    <p className="mt-4 max-w-2xl mx-auto text-lg text-foreground/80">
-                        Please read the following rules carefully to ensure a fair and enjoyable experience for everyone.
-                    </p>
-                </div>
+                <div className="max-w-5xl mx-auto">
+                    <div className="text-center mb-12">
+                        <Scale className="mx-auto h-16 w-16 text-primary" />
+                        <h1 className="font-headline text-4xl md:text-5xl font-bold tracking-tighter mt-4">
+                            Hackathon Rules & Guidelines
+                        </h1>
+                        <p className="mt-4 max-w-2xl mx-auto text-lg text-foreground/80">
+                            Please read the following rules carefully to ensure a fair and enjoyable experience for everyone.
+                        </p>
+                    </div>
 
-                <div className="grid gap-8 md:grid-cols-1 lg:grid-cols-2">
-                    {rules.map((rule) => (
-                        <Card key={rule.title} className="bg-card/80 backdrop-blur-sm transition-all duration-300 hover:shadow-xl hover:-translate-y-1 border-2 border-transparent hover:border-primary/30">
-                            <CardHeader className="flex flex-row items-center gap-4">
-                                {rule.icon}
-                                <CardTitle className="font-headline text-2xl font-semibold">{rule.title}</CardTitle>
-                            </CardHeader>
-                            <CardContent>
-                                <ul className="list-disc list-inside space-y-2 text-foreground/70">
-                                    {rule.points.map((point, index) => (
-                                        <li key={index}>{point}</li>
-                                    ))}
-                                </ul>
-                            </CardContent>
-                        </Card>
-                    ))}
+                    <div className="grid gap-8 md:grid-cols-2">
+                        {rules.map((rule) => (
+                            <Card key={rule.title} className="bg-card/80 backdrop-blur-sm transition-all duration-300 hover:shadow-xl hover:-translate-y-1 border-2 border-transparent hover:border-primary/30">
+                                <CardHeader className="flex flex-row items-center gap-4">
+                                    {rule.icon}
+                                    <CardTitle className="font-headline text-2xl font-semibold">{rule.title}</CardTitle>
+                                </CardHeader>
+                                <CardContent>
+                                    <ul className="list-disc list-inside space-y-2 text-foreground/70">
+                                        {rule.points.map((point, index) => (
+                                            <li key={index}>{point}</li>
+                                        ))}
+                                    </ul>
+                                </CardContent>
+                            </Card>
+                        ))}
+                    </div>
                 </div>
             </div>
         </div>

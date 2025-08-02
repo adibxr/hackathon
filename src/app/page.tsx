@@ -36,33 +36,35 @@ export default function Home() {
         {/* Prizes Section */}
         <section id="prizes" className="py-20 md:py-28 bg-secondary/50">
           <div className="container mx-auto px-4">
-            <h2 className="font-headline text-3xl md:text-4xl font-bold text-center">Prizes & Recognition</h2>
-            <p className="mt-4 max-w-2xl mx-auto text-center text-lg text-foreground/70">
-              Your hard work and innovation will be rewarded.
-            </p>
-            <div className="mt-12 grid gap-8 md:grid-cols-1 lg:grid-cols-2">
-              <Card className="bg-card/80 backdrop-blur-sm transition-all duration-300 hover:shadow-xl hover:-translate-y-2 border-2 border-transparent hover:border-accent/50">
-                <CardHeader className="flex flex-row items-center gap-4">
-                  <Award className="h-10 w-10 text-accent" />
-                  <CardTitle className="font-headline text-2xl font-semibold">Dynamic Cash Prizes</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-foreground/70">
-                    The prize pool grows as more participants register! The top teams will share a significant cash prize, rewarding the most impactful and innovative solutions.
-                  </p>
-                </CardContent>
-              </Card>
-              <Card className="bg-card/80 backdrop-blur-sm transition-all duration-300 hover:shadow-xl hover:-translate-y-2 border-2 border-transparent hover:border-accent/50">
-                <CardHeader className="flex flex-row items-center gap-4">
-                   <School className="h-10 w-10 text-accent" />
-                  <CardTitle className="font-headline text-2xl font-semibold">Credential Certificates</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-foreground/70">
-                    All participants will receive a verifiable digital certificate of completion, in collaboration with ASOSE School and IHFC, recognizing your skills and participation in this premier event.
-                  </p>
-                </CardContent>
-              </Card>
+            <div className="max-w-5xl mx-auto">
+              <h2 className="font-headline text-3xl md:text-4xl font-bold text-center">Prizes & Recognition</h2>
+              <p className="mt-4 max-w-2xl mx-auto text-center text-lg text-foreground/70">
+                Your hard work and innovation will be rewarded.
+              </p>
+              <div className="mt-12 grid gap-8 md:grid-cols-2">
+                <Card className="bg-card/80 backdrop-blur-sm transition-all duration-300 hover:shadow-xl hover:-translate-y-2 border-2 border-transparent hover:border-accent/50">
+                  <CardHeader className="flex flex-row items-center gap-4">
+                    <Award className="h-10 w-10 text-accent" />
+                    <CardTitle className="font-headline text-2xl font-semibold">Dynamic Cash Prizes</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-foreground/70">
+                      The prize pool grows as more participants register! The top teams will share a significant cash prize, rewarding the most impactful and innovative solutions.
+                    </p>
+                  </CardContent>
+                </Card>
+                <Card className="bg-card/80 backdrop-blur-sm transition-all duration-300 hover:shadow-xl hover:-translate-y-2 border-2 border-transparent hover:border-accent/50">
+                  <CardHeader className="flex flex-row items-center gap-4">
+                     <School className="h-10 w-10 text-accent" />
+                    <CardTitle className="font-headline text-2xl font-semibold">Credential Certificates</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-foreground/70">
+                      All participants will receive a verifiable digital certificate of completion, in collaboration with ASOSE School and IHFC, recognizing your skills and participation in this premier event.
+                    </p>
+                  </CardContent>
+                </Card>
+              </div>
             </div>
           </div>
         </section>

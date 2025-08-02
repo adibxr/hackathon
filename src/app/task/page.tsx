@@ -54,6 +54,7 @@ export default function TaskPage() {
     return (
         <div className="bg-background">
             <div className="container mx-auto px-4 py-16 md:py-24">
+              <div className="max-w-5xl mx-auto">
                 <div className="text-center mb-16">
                     <Target className="mx-auto h-16 w-16 text-primary" />
                     <h1 className="font-headline text-4xl md:text-5xl font-bold tracking-tighter mt-4">
@@ -92,7 +93,7 @@ export default function TaskPage() {
                 <h2 className="font-headline text-3xl md:text-4xl font-bold text-center mb-12">
                     Event Timeline
                 </h2>
-                <div className="grid gap-8 md:grid-cols-1 lg:grid-cols-2">
+                <div className="grid gap-8 md:grid-cols-2">
                     {timeline.map((item) => (
                         <Card key={item.title} className="bg-card/80 backdrop-blur-sm transition-all duration-300 hover:shadow-xl hover:-translate-y-1 border-2 border-transparent hover:border-primary/30">
                             <CardHeader className="flex flex-row items-center gap-4">
@@ -108,6 +109,7 @@ export default function TaskPage() {
                         </Card>
                     ))}
                 </div>
+              </div>
             </div>
         </div>
     );
