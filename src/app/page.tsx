@@ -29,8 +29,8 @@ const themes = [
 ];
 
 const collaborators = [
-  { name: 'ASOSE School', logo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGYOLFd7kZINvGVqyRD15yip_can4vgSs8EQ&s', hint: 'university building' },
-  { name: 'IHFC', logo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSTOCaryQ0Mvq1VibLpsnbQZlS8UjoRI7l9Ag&s', hint: 'technology logo' },
+  { name: 'ASOSE School', logo: 'https://raw.githubusercontent.com/adibxr/public/refs/heads/main/schoollogo.png', hint: 'university building' },
+  { name: 'IHFC', logo: 'https://raw.githubusercontent.com/adibxr/public/refs/heads/main/ihfc.png', hint: 'technology logo' },
 ];
 
 export default function Home() {
