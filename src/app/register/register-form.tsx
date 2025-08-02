@@ -25,7 +25,7 @@ const formSchema = z.object({
   email: z.string().email({ message: 'Please enter a valid email address.' }),
   mobile: z.string().regex(/^\d{10}$/, { message: 'Please enter a valid 10-digit mobile number.' }),
   github: z.string().url({ message: 'Please enter a valid URL.' }).optional().or(z.literal('')),
-  resume: z.any().optional(),
+  resume: z.string().url({ message: 'Please enter a valid URL.' }).optional().or(z.literal('')),
   city: z.string().min(2, { message: 'City is required.' }),
 });
 
@@ -40,19 +40,16 @@ export function RegisterForm() {
       email: '',
       mobile: '',
       github: '',
+      resume: '',
       city: '',
     },
   });
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     setIsSubmitting(true);
-    // The resume field is complex to handle in this context.
-    // We will pass all values except the resume to the server action.
-    // Real file handling would require more infrastructure.
-    const { resume, ...submissionData } = values;
-
+    
     try {
-      const result = await registerUser(submissionData);
+      const result = await registerUser(values);
       if (result.success) {
         toast({
           title: "Registration Successful!",
@@ -148,12 +145,12 @@ export function RegisterForm() {
               name="resume"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Resume (Optional)</FormLabel>
+                  <FormLabel>Resume URL (Optional)</FormLabel>
                   <FormControl>
-                    <Input type="file" {...form.register('resume')} />
+                    <Input type="url" placeholder="https://your-resume-url.com" {...field} />
                   </FormControl>
                   <FormDescription>
-                    Upload your resume if you want to share it with sponsors.
+                    Provide a link to your resume (e.g., Google Drive, LinkedIn).
                   </FormDescription>
                   <FormMessage />
                 </FormItem>

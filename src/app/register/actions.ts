@@ -7,6 +7,7 @@ const registerSchema = z.object({
   email: z.string().email(),
   mobile: z.string(),
   github: z.string().optional(),
+  resume: z.string().optional(),
   city: z.string(),
 });
 
@@ -31,6 +32,7 @@ export async function registerUser(data: RegistrationData): Promise<{ success: b
   console.log(`Mobile: ${result.data.mobile}`);
   console.log(`City: ${result.data.city}`);
   console.log(`GitHub: ${result.data.github || 'Not provided'}`);
+  console.log(`Resume URL: ${result.data.resume || 'Not provided'}`);
   console.log('--- Registration Data Sent to ccidcop@gmail.com (Simulated) ---');
 
   // Simulate a network delay
