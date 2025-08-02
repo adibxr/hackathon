@@ -37,13 +37,13 @@ const themes = [
 const collaborators = [
   { 
     name: 'ASOSE School', 
-    logo: 'https://raw.githubusercontent.com/user-attachments/assets/94101e68-1115-464a-87a2-11356b25206f', 
+    logo: 'https://raw.githubusercontent.com/adibxr/public/refs/heads/main/schoollogo.png', 
     hint: 'university building',
     description: 'Dr. B.R. Ambedkar Schools of Specialised Excellence (ASOSEs) are choice-based schools for grades 9 to 12 that allow students to specialise in their chosen fields of study. The Government of NCT of Delhi has established Dr. B.R. Ambedkar Schools of Specialised Excellence in order to cater to students who have a demonstrated interest and aptitude in specific domains.'
   },
   { 
     name: 'IHFC', 
-    logo: 'https://raw.githubusercontent.com/user-attachments/assets/99a2c349-813c-411a-9694-255097f471f5', 
+    logo: 'https://raw.githubusercontent.com/adibxr/public/refs/heads/main/ihfc.png', 
     hint: 'technology logo',
     description: 'In the past few years, the world and especially India has rapidly seen advancement in sensing, computing, algorithm research, and development. This has further ushered in the growth of robotics research and its adaptation in the real world. Today, it’s very obvious that robots are being used and every sector, let it be in the life of a simple farmer planting and harvesting his crops, to the wholesaler who needs to manage his inventory in his vast warehouse of all agricultural produce. The usage of drones in agriculture, defense, and industry has taken a turn only for the better. The use of robots in collaboration with doctors is being used in long intensive surgeries. All over the world and this kind of collaborative work with robots will just increase with time'
   },
