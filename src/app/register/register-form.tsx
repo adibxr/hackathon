@@ -15,7 +15,6 @@ import {
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { useToast } from '@/hooks/use-toast';
-import { registerUser } from './actions';
 import { useState } from 'react';
 import { Loader2 } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
@@ -49,15 +48,22 @@ export function RegisterForm() {
     setIsSubmitting(true);
     
     try {
-      const result = await registerUser(values);
-      if (result.success) {
+      const response = await fetch('https://formspree.io/f/xrblabjk', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(values),
+      });
+
+      if (response.ok) {
         toast({
           title: "Registration Successful!",
           description: "We've received your details. Welcome to the crackdown!",
         });
         form.reset();
       } else {
-        throw new Error(result.error || 'An unknown error occurred.');
+        throw new Error('Something went wrong. Please try again.');
       }
     } catch (error: any) {
       toast({
