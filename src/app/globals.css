@@ -95,13 +95,12 @@
   }
 
   .animate-strike {
-    animation: strike 0.7s ease-in-out forwards;
-    animation-delay: 0.5s;
+    animation: strike 1s ease-in-out forwards;
   }
 
   .animate-fall {
     animation: fall 1s ease-in forwards;
-    animation-delay: 0.2s;
+    animation-delay: 0.5s;
     transform-origin: center;
   }
   
@@ -111,11 +110,11 @@
           opacity: 1;
       }
       50% {
-          transform: translateY(60px) scale(1.5);
+          transform: translateY(110px) scale(1.5);
           opacity: 1;
       }
       100% {
-          transform: translateY(110px) scale(1);
+          transform: translateY(0) scale(1);
           opacity: 1;
       }
   }
