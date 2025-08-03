@@ -52,7 +52,7 @@ export function RegisterForm() {
     setIsSubmitting(true);
 
     const options = {
-      key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID || 'rzp_test_5fLsQJ2vA4wB3Z',
+      key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID || 'rzp_live_2xmNfhEtDk3XKE',
       amount: 4900, // amount in the smallest currency unit (49 * 100)
       currency: "INR",
       name: "Cyber Crackdown",
