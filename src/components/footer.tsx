@@ -4,7 +4,7 @@ import { FireboltIcon } from './icons';
 import { useEffect, useState } from 'react';
 
 export default function Footer() {
-  const [year, setYear] = useState(new Date().getFullYear());
+  const [year, setYear] = useState<number | null>(null);
 
   useEffect(() => {
     setYear(new Date().getFullYear());
@@ -18,7 +18,7 @@ export default function Footer() {
           <p className="text-sm font-semibold">Cyber Crackdown</p>
         </div>
         <p className="text-sm text-foreground/60 mt-4 sm:mt-0">
-          © {year} Cyber Crackdown. All rights reserved.
+          © {year || new Date().getFullYear()} Cyber Crackdown. All rights reserved.
         </p>
       </div>
     </footer>
