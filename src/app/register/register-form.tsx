@@ -94,7 +94,7 @@ Thank you for registering!
     setIsSubmitting(true);
 
     const options = {
-      key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID || 'rzp_live_2xmNfhEtDk3XKE',
+      key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID || 'rzp_test_oHInVIOq4kRB5H',
       amount: 4900,
       currency: "INR",
       name: "Cyber Crackdown",
@@ -278,7 +278,7 @@ Thank you for registering!
             />
             <Button type="submit" size="lg" className="w-full text-lg" disabled={isSubmitting}>
               {isSubmitting && <Loader2 className="mr-2 h-5 w-5 animate-spin" />}
-              {isSubpassing ? 'Processing...' : 'Pay ₹49 and Register'}
+              {isSubmitting ? 'Processing...' : 'Pay ₹49 and Register'}
             </Button>
           </form>
         </Form>
