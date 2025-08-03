@@ -28,11 +28,15 @@ const formSchema = z.object({
   city: z.string().min(2, { message: 'City is required.' }),
 });
 
+type FormValues = z.infer<typeof formSchema>;
+
+declare const Razorpay: any;
+
 export function RegisterForm() {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
   
-  const form = useForm<z.infer<typeof formSchema>>({
+  const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       name: '',
@@ -44,43 +48,89 @@ export function RegisterForm() {
     },
   });
 
-  async function onSubmit(values: z.infer<typeof formSchema>) {
+  const handlePaymentAndSubmit = async (values: FormValues) => {
     setIsSubmitting(true);
-    
-    try {
-      const response = await fetch('https://formspree.io/f/xrblabjk', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(values),
-      });
 
-      if (response.ok) {
-        toast({
-          title: "Registration Successful!",
-          description: "We've received your details. Welcome to the crackdown!",
-        });
-        form.reset();
-      } else {
-        throw new Error('Something went wrong. Please try again.');
+    const options = {
+      key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID || 'rzp_test_5fLsQJ2vA4wB3Z',
+      amount: 4900, // amount in the smallest currency unit (49 * 100)
+      currency: "INR",
+      name: "Cyber Crackdown",
+      description: "Hackathon Registration Fee",
+      image: "https://raw.githubusercontent.com/adibxr/public/refs/heads/main/schoollogo.png", // ASOSE Logo from collaborators
+      handler: async function (response: any) {
+        // This function is called after successful payment
+        try {
+          // Add payment ID to form values to send to formspree
+          const submissionValues = {
+            ...values,
+            razorpay_payment_id: response.razorpay_payment_id,
+          };
+          
+          const formspreeResponse = await fetch('https://formspree.io/f/xrblabjk', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(submissionValues),
+          });
+
+          if (formspreeResponse.ok) {
+            toast({
+              title: "Registration Successful!",
+              description: "We've received your details and payment. Welcome to the crackdown!",
+            });
+            form.reset();
+          } else {
+            throw new Error('Form submission failed after payment. Please contact support.');
+          }
+        } catch (error: any) {
+          toast({
+            variant: 'destructive',
+            title: 'Submission Failed',
+            description: error.message,
+          });
+        } finally {
+          setIsSubmitting(false);
+        }
+      },
+      prefill: {
+        name: values.name,
+        email: values.email,
+        contact: values.mobile,
+      },
+      notes: {
+        address: "Cyber Crackdown Hackathon"
+      },
+      theme: {
+        color: "#2563EB" // Blue to match primary color
+      },
+      modal: {
+        ondismiss: function() {
+          setIsSubmitting(false); // Re-enable button if user closes payment modal
+        }
       }
-    } catch (error: any) {
+    };
+
+    const rzp = new Razorpay(options);
+
+    rzp.on('payment.failed', function (response: any) {
       toast({
         variant: 'destructive',
-        title: 'Registration Failed',
-        description: error.message,
+        title: 'Payment Failed',
+        description: `Error: ${response.error.description}`,
       });
-    } finally {
       setIsSubmitting(false);
-    }
+    });
+
+    rzp.open();
   }
 
   return (
     <Card className="bg-card/80 backdrop-blur-sm shadow-lg border">
       <CardContent className="p-8">
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+          <form onSubmit={form.handleSubmit(handlePaymentAndSubmit)} className="space-y-8">
             <FormField
               control={form.control}
               name="name"
@@ -164,7 +214,7 @@ export function RegisterForm() {
             />
             <Button type="submit" size="lg" className="w-full text-lg" disabled={isSubmitting}>
               {isSubmitting && <Loader2 className="mr-2 h-5 w-5 animate-spin" />}
-              {isSubmitting ? 'Submitting...' : 'Submit Registration'}
+              {isSubmitting ? 'Processing...' : 'Pay ₹49 and Register'}
             </Button>
           </form>
         </Form>
