@@ -93,10 +93,7 @@ Thank you for registering!
   const handlePaymentAndSubmit = async (values: FormValues) => {
     setIsSubmitting(true);
     
-    // Use the live key from environment variables if available, otherwise fall back to the test key.
-    // To go live, add your Razorpay live key to a .env.local file:
-    // NEXT_PUBLIC_RAZORPAY_KEY_ID=YOUR_LIVE_KEY_HERE
-    const razorpayKey = process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID || 'rzp_test_oHInVIOq4kRB5H';
+    const razorpayKey = 'rzp_live_2xmNfhEtDk3XKE';
 
     const options = {
       key: razorpayKey,
