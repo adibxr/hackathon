@@ -1,3 +1,4 @@
+
 'use client';
 
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -16,8 +17,8 @@ import {
 import { Input } from '@/components/ui/input';
 import { useToast } from '@/hooks/use-toast';
 import { useState } from 'react';
-import { Loader2 } from 'lucide-react';
-import { Card, CardContent } from '@/components/ui/card';
+import { Loader2, CheckCircle, Download } from 'lucide-react';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
 const formSchema = z.object({
   name: z.string().min(2, { message: 'Name must be at least 2 characters.' }),
@@ -35,7 +36,9 @@ declare const Razorpay: any;
 export function RegisterForm() {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
-  
+  const [isSuccess, setIsSuccess] = useState(false);
+  const [paymentDetails, setPaymentDetails] = useState<{ id: string, values: FormValues } | null>(null);
+
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -48,20 +51,57 @@ export function RegisterForm() {
     },
   });
 
+  const handleDownloadReceipt = () => {
+    if (!paymentDetails) return;
+    
+    const receiptContent = `
+Cyber Crackdown Hackathon - Payment Receipt
+------------------------------------------
+
+Registration Details:
+Name: ${paymentDetails.values.name}
+Email: ${paymentDetails.values.email}
+Mobile: ${paymentDetails.values.mobile}
+City: ${paymentDetails.values.city}
+GitHub: ${paymentDetails.values.github || 'N/A'}
+Resume: ${paymentDetails.values.resume || 'N/A'}
+
+Payment Details:
+Razorpay Payment ID: ${paymentDetails.id}
+Amount: ₹49.00
+Status: Successful
+
+Thank you for registering!
+    `;
+    const blob = new Blob([receiptContent.trim()], { type: 'text/plain' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `CyberCrackdown_Receipt_${paymentDetails.id}.txt`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  };
+
+  const handleRegisterAnother = () => {
+    setIsSuccess(false);
+    setPaymentDetails(null);
+    form.reset();
+  };
+
   const handlePaymentAndSubmit = async (values: FormValues) => {
     setIsSubmitting(true);
 
     const options = {
       key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID || 'rzp_live_2xmNfhEtDk3XKE',
-      amount: 4900, // amount in the smallest currency unit (49 * 100)
+      amount: 4900,
       currency: "INR",
       name: "Cyber Crackdown",
       description: "Hackathon Registration Fee",
-      image: "https://raw.githubusercontent.com/adibxr/public/refs/heads/main/schoollogo.png", // ASOSE Logo from collaborators
+      image: "https://raw.githubusercontent.com/adibxr/public/refs/heads/main/schoollogo.png",
       handler: async function (response: any) {
-        // This function is called after successful payment
         try {
-          // Add payment ID to form values to send to formspree
           const submissionValues = {
             ...values,
             razorpay_payment_id: response.razorpay_payment_id,
@@ -80,7 +120,8 @@ export function RegisterForm() {
               title: "Registration Successful!",
               description: "We've received your details and payment. Welcome to the crackdown!",
             });
-            form.reset();
+            setPaymentDetails({ id: response.razorpay_payment_id, values });
+            setIsSuccess(true);
           } else {
             throw new Error('Form submission failed after payment. Please contact support.');
           }
@@ -103,11 +144,11 @@ export function RegisterForm() {
         address: "Cyber Crackdown Hackathon"
       },
       theme: {
-        color: "#2563EB" // Blue to match primary color
+        color: "#2563EB"
       },
       modal: {
         ondismiss: function() {
-          setIsSubmitting(false); // Re-enable button if user closes payment modal
+          setIsSubmitting(false);
         }
       }
     };
@@ -124,6 +165,29 @@ export function RegisterForm() {
     });
 
     rzp.open();
+  }
+
+  if (isSuccess) {
+    return (
+      <Card className="bg-card/80 backdrop-blur-sm shadow-lg border">
+        <CardContent className="p-8 text-center">
+          <CheckCircle className="mx-auto h-20 w-20 text-green-500 mb-4" />
+          <h2 className="font-headline text-3xl font-bold text-white mb-2">Congratulations!</h2>
+          <p className="text-foreground/80 mb-8">
+            Your registration is complete. We're excited to have you on board!
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button onClick={handleDownloadReceipt} size="lg" className="text-lg">
+              <Download className="mr-2 h-5 w-5" />
+              Download Receipt
+            </Button>
+            <Button onClick={handleRegisterAnother} variant="outline" size="lg" className="text-lg">
+              Register Another
+            </Button>
+          </div>
+        </CardContent>
+      </Card>
+    );
   }
 
   return (
@@ -214,7 +278,7 @@ export function RegisterForm() {
             />
             <Button type="submit" size="lg" className="w-full text-lg" disabled={isSubmitting}>
               {isSubmitting && <Loader2 className="mr-2 h-5 w-5 animate-spin" />}
-              {isSubmitting ? 'Processing...' : 'Pay ₹49 and Register'}
+              {isSubpassing ? 'Processing...' : 'Pay ₹49 and Register'}
             </Button>
           </form>
         </Form>
