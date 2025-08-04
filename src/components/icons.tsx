@@ -1,6 +1,6 @@
 import type { SVGProps } from 'react';
 
-export function FireboltIcon(props: SVGProps<SVGSVGElement>) {
+export function LogoIcon(props: SVGProps<SVGSVGElement>) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -12,10 +12,14 @@ export function FireboltIcon(props: SVGProps<SVGSVGElement>) {
       strokeLinejoin="round"
       {...props}
     >
-      <path d="M13 3l-4 9h5l-10 11 4-9H7l6-11z" />
+      <path d="M12 22a10 10 0 0 0 10-10H2a10 10 0 0 0 10 10z" />
+      <path d="M12 15a3.5 3.5 0 0 1-3.5-3.5V6h7v5.5A3.5 3.5 0 0 1 12 15z" />
+      <path d="M12 6V2" />
+      <path d="M12 15v7" />
     </svg>
   );
 }
+
 
 export function DiscordIcon(props: SVGProps<SVGSVGElement>) {
   return (

@@ -3,7 +3,7 @@
 
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { FireboltIcon } from '@/components/icons';
+import { LogoIcon } from '@/components/icons';
 import { Users, School, Award, Eye, Wifi, Target, Calendar, ClipboardCheck, Trophy, Briefcase, Code, LineChart, Github, Twitter, Mail } from 'lucide-react';
 import Link from 'next/link';
 import CollaboratorsSection from '@/components/collaborators-section';
@@ -114,7 +114,7 @@ export default function Home() {
         {/* Hero Section */}
         <section className="relative py-24 md:py-32 lg:py-40 bg-cover bg-center" style={{backgroundImage: 'linear-gradient(to bottom, hsl(240 10% 7%), hsl(240 10% 3.9%))'}}>
           <div className="container mx-auto px-4 text-center">
-            <FireboltIcon 
+            <LogoIcon
               className={`mx-auto h-20 w-20 text-primary transition-opacity duration-300 ${startAnimation ? 'animate-strike' : 'animate-pulse'}`}
               onAnimationEnd={handleStrikeAnimationEnd}
             />

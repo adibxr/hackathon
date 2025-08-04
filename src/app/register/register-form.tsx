@@ -15,10 +15,12 @@ import {
   FormMessage,
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
+import { Checkbox } from '@/components/ui/checkbox';
 import { useToast } from '@/hooks/use-toast';
 import { useState } from 'react';
 import { Loader2, CheckCircle, Download } from 'lucide-react';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent } from '@/components/ui/card';
+import Link from 'next/link';
 
 const formSchema = z.object({
   name: z.string().min(2, { message: 'Name must be at least 2 characters.' }),
@@ -27,6 +29,9 @@ const formSchema = z.object({
   github: z.string().url({ message: 'Please enter a valid URL.' }).optional().or(z.literal('')),
   resume: z.string().url({ message: 'Please enter a valid URL.' }).optional().or(z.literal('')),
   city: z.string().min(2, { message: 'City is required.' }),
+  terms: z.boolean().default(false).refine(val => val === true, {
+    message: 'You must accept the terms and conditions.',
+  }),
 });
 
 type FormValues = z.infer<typeof formSchema>;
@@ -48,6 +53,7 @@ export function RegisterForm() {
       github: '',
       resume: '',
       city: '',
+      terms: false,
     },
   });
 
@@ -278,7 +284,30 @@ Thank you for registering!
                 </FormItem>
               )}
             />
-            <Button type="submit" size="lg" className="w-full text-lg" disabled={isSubmitting}>
+            <FormField
+              control={form.control}
+              name="terms"
+              render={({ field }) => (
+                <FormItem className="flex flex-row items-start space-x-3 space-y-0 rounded-md border p-4 shadow">
+                  <FormControl>
+                    <Checkbox
+                      checked={field.value}
+                      onCheckedChange={field.onChange}
+                    />
+                  </FormControl>
+                  <div className="space-y-1 leading-none">
+                    <FormLabel>
+                      I agree to the 
+                      <Link href="/terms" target="_blank" className="text-primary hover:underline ml-1">
+                        Terms and Conditions
+                      </Link>
+                    </FormLabel>
+                    <FormMessage />
+                  </div>
+                </FormItem>
+              )}
+            />
+            <Button type="submit" size="lg" className="w-full text-lg" disabled={isSubmitting || !form.watch('terms')}>
               {isSubmitting && <Loader2 className="mr-2 h-5 w-5 animate-spin" />}
               {isSubmitting ? 'Processing...' : 'Pay ₹49 and Register'}
             </Button>
