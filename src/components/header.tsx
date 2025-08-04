@@ -33,14 +33,17 @@ export default function Header() {
   return (
     <header className="sticky top-4 z-50 mx-auto max-w-5xl">
       <div className={cn(
-        "transition-all duration-300 rounded-full border-border shadow-md backdrop-blur-lg border",
-        "bg-background/80"
+        "transition-all duration-300 rounded-full border-border",
+        isScrolled ? "bg-background/80 shadow-md backdrop-blur-lg border" : "bg-transparent border-transparent"
       )}>
         <div className="container mx-auto px-2 sm:px-4 h-20 flex items-center justify-between">
           <Link href="/" className="flex items-center gap-2 group">
             <LogoIcon className="h-8 w-8 text-primary transition-transform duration-300 group-hover:scale-110" />
           </Link>
-          <nav className="flex items-center gap-1 bg-secondary/50 rounded-full px-2 py-2 ml-4">
+          <nav className={cn(
+            "flex items-center gap-1 rounded-full px-2 py-2 ml-4 transition-all duration-300",
+            isScrolled ? "bg-secondary/50" : "bg-transparent"
+          )}>
             {navLinks.map((link) => (
               <Link key={link.href} href={link.href} className="font-headline uppercase tracking-wider font-medium text-foreground/70 hover:text-primary transition-colors px-2 sm:px-3 py-1 rounded-full hover:bg-background/50 text-xs sm:text-sm">
                 {link.text}

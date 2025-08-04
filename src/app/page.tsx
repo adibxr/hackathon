@@ -170,7 +170,7 @@ export default function Home() {
             >
               Cyber Crackdown
             </h1>
-            <TypingAnimation text="Hey! its time to code" />
+            <TypingAnimation text="Ready. Set. Code!" />
             <p className="mt-4 max-w-2xl mx-auto text-lg md:text-xl text-slate-300">
               Join the brightest minds to innovate, build, and deploy the next generation of cybersecurity solutions.
             </p>
