@@ -4,7 +4,7 @@
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { LogoIcon } from '@/components/icons';
-import { Users, School, Award, Eye, Wifi, Target, Calendar, ClipboardCheck, Trophy, Briefcase, Code, LineChart, Github, Twitter, Mail, UserPlus } from 'lucide-react';
+import { Users, School, Award, Eye, Wifi, Target, Calendar, ClipboardCheck, Trophy, Briefcase, Code, LineChart, Github, Twitter, Mail, UserPlus, Loader2 } from 'lucide-react';
 import Link from 'next/link';
 import CollaboratorsSection from '@/components/collaborators-section';
 import TypingAnimation from '@/components/typing-animation';
@@ -18,6 +18,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog"
+import { useToast } from '@/hooks/use-toast';
 
 const stats = [
     { icon: <Users className="h-10 w-10 text-primary" />, value: '1,200+', label: 'Registered Users' },
@@ -96,9 +97,12 @@ const socialLinks = [
 ]
 
 export default function Home() {
+  const { toast } = useToast();
   const [startAnimation, setStartAnimation] = useState(false);
   const [isStruck, setIsStruck] = useState(false);
   const [isFalling, setIsFalling] = useState(false);
+  const [isSubmittingTeam, setIsSubmittingTeam] = useState(false);
+  const [isTeamDialogOpen, setIsTeamDialogOpen] = useState(false);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -114,6 +118,40 @@ export default function Home() {
         setIsFalling(true);
       }, 0); 
       return () => clearTimeout(fallTimer);
+    }
+  };
+
+  const handleJoinTeamSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setIsSubmittingTeam(true);
+    const formData = new FormData(event.currentTarget);
+
+    try {
+      const response = await fetch('https://formsubmit.co/ccidcop@gmail.com', {
+        method: 'POST',
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        },
+      });
+
+      if (response.ok) {
+        toast({
+          title: 'Request Received!',
+          description: "Thank you for your interest. We'll get back to you soon.",
+        });
+        setIsTeamDialogOpen(false);
+      } else {
+        throw new Error('Something went wrong. Please try again.');
+      }
+    } catch (error: any) {
+      toast({
+        variant: 'destructive',
+        title: 'Submission Error',
+        description: error.message,
+      });
+    } finally {
+      setIsSubmittingTeam(false);
     }
   };
 
@@ -282,7 +320,7 @@ export default function Home() {
                             </Card>
                         </Link>
                     ))}
-                     <Dialog>
+                     <Dialog open={isTeamDialogOpen} onOpenChange={setIsTeamDialogOpen}>
                       <DialogTrigger asChild>
                          <Card className="cursor-pointer bg-card/80 backdrop-blur-sm transition-all duration-300 hover:shadow-xl hover:-translate-y-2 border-2 border-transparent hover:border-primary/30 h-full">
                             <CardContent className="p-6 flex flex-col items-center justify-center text-center h-full">
@@ -299,8 +337,7 @@ export default function Home() {
                             We're looking for passionate individuals. Fill out the form below to apply.
                           </DialogDescription>
                         </DialogHeader>
-                        <form action="https://formsubmit.co/ccidcop@gmail" method="POST" className="space-y-4">
-                           <input type="hidden" name="_next" value="https://cybercrackdown.vercel.app/thank-you" />
+                        <form onSubmit={handleJoinTeamSubmit} className="space-y-4">
                            <input type="hidden" name="_captcha" value="false" />
                           <div className="space-y-2">
                             <label htmlFor="name" className="text-sm font-medium">Name</label>
@@ -322,7 +359,10 @@ export default function Home() {
                               <label htmlFor="resume-url" className="text-sm font-medium">Resume URL (Optional)</label>
                               <Input id="resume-url" name="resume_url" placeholder="https://your-resume-link.com" />
                             </div>
-                          <Button type="submit" size="lg" className="w-full text-lg">Submit Application</Button>
+                          <Button type="submit" size="lg" className="w-full text-lg" disabled={isSubmittingTeam}>
+                            {isSubmittingTeam && <Loader2 className="mr-2 h-5 w-5 animate-spin" />}
+                            {isSubmittingTeam ? 'Submitting...' : 'Submit Application'}
+                          </Button>
                         </form>
                       </DialogContent>
                     </Dialog>
@@ -334,5 +374,3 @@ export default function Home() {
     </div>
   );
 }
-
-    
