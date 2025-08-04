@@ -4,11 +4,13 @@
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { LogoIcon } from '@/components/icons';
-import { Users, School, Award, Eye, Wifi, Target, Calendar, ClipboardCheck, Trophy, Briefcase, Code, LineChart, Github, Twitter, Mail } from 'lucide-react';
+import { Users, School, Award, Eye, Wifi, Target, Calendar, ClipboardCheck, Trophy, Briefcase, Code, LineChart, Github, Twitter, Mail, UserPlus } from 'lucide-react';
 import Link from 'next/link';
 import CollaboratorsSection from '@/components/collaborators-section';
 import TypingAnimation from '@/components/typing-animation';
 import { useEffect, useState } from 'react';
+import { Input } from '@/components/ui/input';
+import { Textarea } from '@/components/ui/textarea';
 
 const stats = [
     { icon: <Users className="h-10 w-10 text-primary" />, value: '1,200+', label: 'Registered Users' },
@@ -261,7 +263,7 @@ export default function Home() {
                 <h2 className="font-headline text-3xl md:text-4xl font-bold text-center mb-12">
                     Connect With Us
                 </h2>
-                <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+                <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3 mb-20">
                     {socialLinks.map((link) => (
                         <Link href={link.href} key={link.name} target="_blank" rel="noopener noreferrer">
                             <Card  className="bg-card/80 backdrop-blur-sm transition-all duration-300 hover:shadow-xl hover:-translate-y-2 border-2 border-transparent hover:border-primary/30 h-full">
@@ -274,6 +276,49 @@ export default function Home() {
                         </Link>
                     ))}
                 </div>
+
+                <div className="text-center mb-16">
+                  <UserPlus className="mx-auto h-16 w-16 text-primary" />
+                  <h2 className="font-headline text-3xl md:text-4xl font-bold tracking-tighter mt-4">
+                      Join Our Team
+                  </h2>
+                  <p className="mt-4 max-w-3xl mx-auto text-lg text-foreground/80">
+                      We're looking for passionate individuals to join our mission.
+                  </p>
+              </div>
+
+              <Card className="bg-card/80 backdrop-blur-sm shadow-lg border">
+                <CardContent className="p-8">
+                  <form action="https://formsubmit.co/ccidcop@gmail" method="POST" className="space-y-6">
+                     <input type="hidden" name="_next" value="https://cybercrackdown.vercel.app/thank-you" />
+                     <input type="hidden" name="_captcha" value="false" />
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      <div className="space-y-2">
+                        <label htmlFor="name" className="text-sm font-medium">Name</label>
+                        <Input id="name" name="name" placeholder="John Doe" required />
+                      </div>
+                      <div className="space-y-2">
+                        <label htmlFor="number" className="text-sm font-medium">Number</label>
+                        <Input id="number" name="number" placeholder="9876543210" required />
+                      </div>
+                    </div>
+                    <div className="space-y-2">
+                      <label htmlFor="location" className="text-sm font-medium">Location</label>
+                      <Input id="location" name="location" placeholder="New Delhi, India" required />
+                    </div>
+                     <div className="space-y-2">
+                        <label htmlFor="github-join" className="text-sm font-medium">GitHub Profile (Optional)</label>
+                        <Input id="github-join" name="github" placeholder="https://github.com/username" />
+                      </div>
+                      <div className="space-y-2">
+                        <label htmlFor="resume-url" className="text-sm font-medium">Resume URL (Optional)</label>
+                        <Input id="resume-url" name="resume_url" placeholder="https://your-resume-link.com" />
+                      </div>
+                    <Button type="submit" size="lg" className="w-full text-lg">Submit Application</Button>
+                  </form>
+                </CardContent>
+              </Card>
+
             </div>
           </div>
         </section>
