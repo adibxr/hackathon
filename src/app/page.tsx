@@ -344,6 +344,10 @@ export default function Home() {
                             <Input id="name" name="name" placeholder="John Doe" required />
                           </div>
                           <div className="space-y-2">
+                            <label htmlFor="email" className="text-sm font-medium">Email</label>
+                            <Input id="email" name="email" type="email" placeholder="you@example.com" required />
+                          </div>
+                          <div className="space-y-2">
                             <label htmlFor="number" className="text-sm font-medium">Number</label>
                             <Input id="number" name="number" placeholder="9876543210" required />
                           </div>
