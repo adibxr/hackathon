@@ -8,7 +8,7 @@ import { Users, School, Award, Eye, Wifi, Target, Calendar, ClipboardCheck, Trop
 import Link from 'next/link';
 import CollaboratorsSection from '@/components/collaborators-section';
 import TypingAnimation from '@/components/typing-animation';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Input } from '@/components/ui/input';
 import {
   Dialog,
@@ -98,28 +98,8 @@ const socialLinks = [
 
 export default function Home() {
   const { toast } = useToast();
-  const [startAnimation, setStartAnimation] = useState(false);
-  const [isStruck, setIsStruck] = useState(false);
-  const [isFalling, setIsFalling] = useState(false);
   const [isSubmittingTeam, setIsSubmittingTeam] = useState(false);
   const [isTeamDialogOpen, setIsTeamDialogOpen] = useState(false);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-        setStartAnimation(true);
-    }, 500);
-    return () => clearTimeout(timer);
-  }, []);
-
-  const handleStrikeAnimationEnd = (event: React.AnimationEvent) => {
-    if (event.animationName === 'strike') {
-      setIsStruck(true);
-      const fallTimer = setTimeout(() => {
-        setIsFalling(true);
-      }, 0); 
-      return () => clearTimeout(fallTimer);
-    }
-  };
 
   const handleJoinTeamSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -162,11 +142,10 @@ export default function Home() {
         <section className="relative py-24 md:py-32 lg:py-40 bg-cover bg-center text-white" style={{backgroundColor: '#222'}}>
           <div className="container mx-auto px-4 text-center">
             <LogoIcon
-              className={`mx-auto h-20 w-20 text-primary transition-opacity duration-300 ${startAnimation ? 'animate-strike' : 'animate-pulse'}`}
-              onAnimationEnd={handleStrikeAnimationEnd}
+              className="mx-auto h-20 w-20 text-primary"
             />
             <h1 
-              className={`font-headline text-4xl md:text-6xl lg:text-7xl font-bold tracking-tighter mt-4 text-white ${isFalling ? 'animate-fall' : ''} ${isStruck ? 'text-primary' : ''}`}
+              className="font-headline text-4xl md:text-6xl lg:text-7xl font-bold tracking-tighter mt-4 text-primary"
             >
               Cyber Crackdown
             </h1>
