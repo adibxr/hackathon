@@ -11,24 +11,12 @@ import { Sheet, SheetContent, SheetTrigger } from './ui/sheet';
 import { useIsMobile } from '@/hooks/use-mobile';
 
 export default function Header() {
-  const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const isMobile = useIsMobile();
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10);
-    };
-    window.addEventListener('scroll', handleScroll);
-    handleScroll(); // Set initial state
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   const navLinks = [
     { href: '/#task', text: 'Task' },
     { href: '/#prizes', text: 'Prizes' },
-    { href: '/#timeline', text: 'Timeline' },
-    { href: '/#collaborators', text: 'Collaborators' },
     { href: '/rules', text: 'Rules' },
   ];
 
@@ -42,7 +30,7 @@ export default function Header() {
             key={link.href} 
             href={link.href} 
             className={cn(
-              "font-headline uppercase tracking-wider font-medium text-foreground/70 hover:text-primary transition-colors px-3 py-1 rounded-full hover:bg-background/50",
+              "font-headline uppercase tracking-wider font-medium text-foreground/70 hover:text-primary transition-colors px-3 py-1 rounded-full hover:bg-white/10",
               inSheet ? "w-full text-center text-lg py-3" : "text-sm"
             )}
             onClick={() => inSheet && setIsMobileMenuOpen(false)}
@@ -54,15 +42,11 @@ export default function Header() {
   );
 
   return (
-    <header className="sticky top-0 z-50">
-      <div className={cn(
-        "transition-all duration-300",
-        isScrolled ? "bg-background/80 shadow-md backdrop-blur-sm border-b" : "bg-transparent border-transparent"
-      )}>
+    <header className="sticky top-0 z-50 p-4">
+       <div className="bg-black/30 backdrop-blur-lg rounded-2xl border border-white/10 shadow-lg">
         <div className="container mx-auto px-4 h-20 flex items-center justify-between">
           <Link href="/" className="flex items-center gap-2 group">
             <LogoIcon className="h-8 w-8 text-primary transition-transform duration-300 group-hover:scale-110" />
-            <span className="font-headline text-lg font-bold text-foreground group-hover:text-primary transition-colors">Cyber Crackdown</span>
           </Link>
           
           <div className="hidden md:flex items-center">
@@ -82,7 +66,7 @@ export default function Header() {
                   <span className="sr-only">Open menu</span>
                 </Button>
               </SheetTrigger>
-              <SheetContent side="right">
+              <SheetContent side="right" className="bg-black/80 backdrop-blur-xl border-l border-white/10">
                 <div className="flex flex-col items-center justify-center h-full">
                   <NavLinksComponent links={navLinks} inSheet />
                    <Button asChild className="rounded-full transition-transform duration-300 hover:scale-110 font-bold mt-8 text-lg px-8 py-6">
