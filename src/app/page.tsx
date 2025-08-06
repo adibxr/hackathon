@@ -139,18 +139,18 @@ export default function Home() {
     <div className="flex flex-col min-h-screen">
       <main className="flex-1">
         {/* Hero Section */}
-        <section className="relative py-24 md:py-32 lg:py-40 bg-cover bg-center text-white" style={{backgroundColor: '#222'}}>
+        <section className="relative py-24 md:py-32 lg:py-40 bg-background text-foreground">
           <div className="container mx-auto px-4 text-center">
             <LogoIcon
               className="mx-auto h-20 w-20 text-primary"
             />
             <h1 
-              className="font-headline text-4xl md:text-6xl lg:text-7xl font-bold tracking-tighter mt-4 text-primary"
+              className="font-headline text-4xl md:text-6xl lg:text-7xl font-bold tracking-tighter mt-4"
             >
               Cyber Crackdown
             </h1>
             <TypingAnimation text="Ready. Set. Code!" />
-            <p className="mt-4 max-w-2xl mx-auto text-lg md:text-xl text-slate-300">
+            <p className="mt-4 max-w-2xl mx-auto text-lg md:text-xl text-muted-foreground">
               Join the brightest minds to innovate, build, and deploy the next generation of cybersecurity solutions.
             </p>
             <div className="mt-8 flex justify-center gap-4">
@@ -162,32 +162,32 @@ export default function Home() {
         </section>
 
         {/* Prizes Section */}
-        <section id="prizes" className="py-20 md:py-28 bg-secondary/50">
+        <section id="prizes" className="py-20 md:py-28 bg-secondary">
           <div className="container mx-auto px-4">
             <div className="max-w-5xl mx-auto">
               <h2 className="font-headline text-3xl md:text-4xl font-bold text-center">Prizes & Recognition</h2>
-              <p className="mt-4 max-w-2xl mx-auto text-center text-lg text-foreground/70">
+              <p className="mt-4 max-w-2xl mx-auto text-center text-lg text-muted-foreground">
                 Your hard work and innovation will be rewarded.
               </p>
               <div className="mt-12 grid gap-8 md:grid-cols-2">
-                <Card className="bg-card/80 backdrop-blur-sm transition-all duration-300 hover:shadow-xl hover:-translate-y-2 border-2 border-transparent hover:border-accent/50">
+                <Card className="bg-card backdrop-blur-sm transition-all duration-300 hover:shadow-xl hover:-translate-y-2 border-2 border-transparent hover:border-accent/50">
                   <CardHeader className="flex flex-row items-center gap-4">
                     <Award className="h-10 w-10 text-accent" />
                     <CardTitle className="font-headline text-2xl font-semibold">Dynamic Cash Prizes</CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <p className="text-foreground/70">
+                    <p className="text-muted-foreground">
                       The prize pool grows as more participants register! The top teams will share a significant cash prize, rewarding the most impactful and innovative solutions.
                     </p>
                   </CardContent>
                 </Card>
-                <Card className="bg-card/80 backdrop-blur-sm transition-all duration-300 hover:shadow-xl hover:-translate-y-2 border-2 border-transparent hover:border-accent/50">
+                <Card className="bg-card backdrop-blur-sm transition-all duration-300 hover:shadow-xl hover:-translate-y-2 border-2 border-transparent hover:border-accent/50">
                   <CardHeader className="flex flex-row items-center gap-4">
                      <School className="h-10 w-10 text-accent" />
                     <CardTitle className="font-headline text-2xl font-semibold">Credential Certificates</CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <p className="text-foreground/70">
+                    <p className="text-muted-foreground">
                       All participants will receive a verifiable digital certificate of completion, in collaboration with ASOSE School and IHFC, recognizing your skills and participation in this premier event.
                     </p>
                   </CardContent>
@@ -206,11 +206,11 @@ export default function Home() {
                   <h2 className="font-headline text-3xl md:text-4xl font-bold tracking-tighter mt-4">
                       Hackathon Task
                   </h2>
-                  <p className="mt-4 max-w-3xl mx-auto text-lg text-foreground/80">
+                  <p className="mt-4 max-w-3xl mx-auto text-lg text-muted-foreground">
                       Your mission, should you choose to accept it.
                   </p>
               </div>
-              <Card className="mb-16 bg-card/80 backdrop-blur-sm border-2 border-primary/30 shadow-lg">
+              <Card className="mb-16 bg-card backdrop-blur-sm border-2 border-primary/30 shadow-lg">
                   <CardHeader>
                       <CardTitle className="font-headline text-3xl flex items-center gap-4">
                           <Target className="h-8 w-8 text-primary" />
@@ -218,14 +218,14 @@ export default function Home() {
                       </CardTitle>
                   </CardHeader>
                   <CardContent>
-                      <p className="mb-6 text-lg text-foreground/80">{taskDetails.description}</p>
+                      <p className="mb-6 text-lg text-muted-foreground">{taskDetails.description}</p>
                       <div className="grid gap-6 sm:grid-cols-1 md:grid-cols-3">
                          {taskDetails.features.map(feature => (
-                             <div key={feature.name} className="flex items-start gap-4 p-4 rounded-lg bg-secondary/50">
+                             <div key={feature.name} className="flex items-start gap-4 p-4 rounded-lg bg-secondary">
                                  <div>{feature.icon}</div>
                                  <div>
                                      <h3 className="font-semibold text-lg">{feature.name}</h3>
-                                     <p className="text-foreground/70">{feature.detail}</p>
+                                     <p className="text-muted-foreground">{feature.detail}</p>
                                  </div>
                              </div>
                          ))}
@@ -237,7 +237,7 @@ export default function Home() {
         </section>
 
         {/* Timeline Section */}
-        <section id="timeline" className="py-20 md:py-28 bg-secondary/50">
+        <section id="timeline" className="py-20 md:py-28 bg-secondary">
           <div className="container mx-auto px-4">
             <div className="max-w-5xl mx-auto">
               <h2 className="font-headline text-3xl md:text-4xl font-bold text-center mb-12">
@@ -245,7 +245,7 @@ export default function Home() {
               </h2>
               <div className="grid gap-8 md:grid-cols-2">
                   {timeline.map((item) => (
-                      <Card key={item.title} className="bg-card/80 backdrop-blur-sm transition-all duration-300 hover:shadow-xl hover:-translate-y-1 border-2 border-transparent hover:border-primary/30">
+                      <Card key={item.title} className="bg-card backdrop-blur-sm transition-all duration-300 hover:shadow-xl hover:-translate-y-1 border-2 border-transparent hover:border-primary/30">
                           <CardHeader className="flex flex-row items-center gap-4">
                               {item.icon}
                               <div>
@@ -254,7 +254,7 @@ export default function Home() {
                               </div>
                           </CardHeader>
                           <CardContent>
-                              <p className="text-foreground/70">{item.description}</p>
+                              <p className="text-muted-foreground">{item.description}</p>
                           </CardContent>
                       </Card>
                   ))}
@@ -266,11 +266,11 @@ export default function Home() {
         <CollaboratorsSection />
         
         {/* Stats Section */}
-        <section id="engagement" className="py-20 md:py-28 bg-secondary/50">
+        <section id="engagement" className="py-20 md:py-28 bg-secondary">
           <div className="container mx-auto px-4">
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 text-center max-w-4xl mx-auto">
               {stats.map((stat, index) => (
-                <div key={index} className="bg-card/80 p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+                <div key={index} className="bg-card p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
                   {stat.icon}
                   <p className="text-3xl font-bold mt-2">{stat.value}</p>
                   <p className="text-muted-foreground mt-1">{stat.label}</p>
@@ -290,7 +290,7 @@ export default function Home() {
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                     {socialLinks.map((link) => (
                         <Link href={link.href} key={link.name} target="_blank" rel="noopener noreferrer">
-                            <Card  className="bg-card/80 backdrop-blur-sm transition-all duration-300 hover:shadow-xl hover:-translate-y-1 border-2 border-transparent hover:border-primary/30 h-full">
+                            <Card  className="bg-card backdrop-blur-sm transition-all duration-300 hover:shadow-xl hover:-translate-y-1 border-2 border-transparent hover:border-primary/30 h-full">
                                 <CardContent className="p-4 flex flex-col items-center justify-center text-center h-full">
                                     {link.icon}
                                     <h3 className="mt-2 font-bold text-md">{link.name}</h3>
@@ -300,7 +300,7 @@ export default function Home() {
                     ))}
                      <Dialog open={isTeamDialogOpen} onOpenChange={setIsTeamDialogOpen}>
                       <DialogTrigger asChild>
-                         <Card className="cursor-pointer bg-card/80 backdrop-blur-sm transition-all duration-300 hover:shadow-xl hover:-translate-y-1 border-2 border-transparent hover:border-primary/30 h-full">
+                         <Card className="cursor-pointer bg-card backdrop-blur-sm transition-all duration-300 hover:shadow-xl hover:-translate-y-1 border-2 border-transparent hover:border-primary/30 h-full">
                             <CardContent className="p-4 flex flex-col items-center justify-center text-center h-full">
                                 <UserPlus className="h-6 w-6 text-primary" />
                                 <h3 className="mt-2 font-bold text-md">Join Our Team</h3>
