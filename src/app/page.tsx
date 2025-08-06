@@ -4,7 +4,7 @@
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { LogoIcon } from '@/components/icons';
-import { Users, School, Award, Eye, Wifi, Target, Calendar, ClipboardCheck, Trophy, Briefcase, Code, LineChart, Github, Twitter, Mail, UserPlus, Loader2 } from 'lucide-react';
+import { Users, School, Zap, Eye, Wifi, Target, Calendar, ClipboardCheck, Trophy, Briefcase, Code, LineChart, Github, Twitter, Mail, UserPlus, Loader2 } from 'lucide-react';
 import Link from 'next/link';
 import CollaboratorsSection from '@/components/collaborators-section';
 import TypingAnimation from '@/components/typing-animation';
@@ -172,12 +172,12 @@ export default function Home() {
               <div className="mt-12 grid gap-8 md:grid-cols-2">
                 <Card className="bg-card backdrop-blur-sm transition-all duration-300 hover:shadow-xl hover:-translate-y-2 border-2 border-transparent hover:border-accent/50">
                   <CardHeader className="flex flex-row items-center gap-4">
-                    <Award className="h-10 w-10 text-accent" />
-                    <CardTitle className="font-headline text-2xl font-semibold">Dynamic Cash Prizes</CardTitle>
+                    <Zap className="h-10 w-10 text-accent" />
+                    <CardTitle className="font-headline text-2xl font-semibold">Dynamic Prize Pool</CardTitle>
                   </CardHeader>
                   <CardContent>
                     <p className="text-muted-foreground">
-                      The prize pool grows as more participants register! The top teams will share a significant cash prize, rewarding the most impactful and innovative solutions.
+                      The prize pool grows with every participant! The more people who register, the bigger the cash prize for the top teams. Your innovation will be rewarded.
                     </p>
                   </CardContent>
                 </Card>
