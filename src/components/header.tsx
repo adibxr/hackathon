@@ -42,11 +42,14 @@ export default function Header() {
   );
 
   return (
-    <header className="sticky top-0 z-50 p-4">
-       <div className="bg-black/30 backdrop-blur-lg rounded-2xl border border-white/10 shadow-lg">
-        <div className="container mx-auto px-4 h-20 flex items-center justify-between">
+    <header className="sticky top-0 z-50 bg-background/95 backdrop-blur-sm">
+      <div className="container mx-auto px-4">
+        <div className="h-20 flex items-center justify-between">
           <Link href="/" className="flex items-center gap-2 group">
             <LogoIcon className="h-8 w-8 text-primary transition-transform duration-300 group-hover:scale-110" />
+            <span className="font-headline text-xl font-bold tracking-tighter text-foreground group-hover:text-primary transition-colors">
+              Cyber Crackdown
+            </span>
           </Link>
           
           <div className="hidden md:flex items-center">
@@ -66,7 +69,7 @@ export default function Header() {
                   <span className="sr-only">Open menu</span>
                 </Button>
               </SheetTrigger>
-              <SheetContent side="right" className="bg-black/80 backdrop-blur-xl border-l border-white/10">
+              <SheetContent side="right" className="bg-background/90 backdrop-blur-xl">
                 <div className="flex flex-col items-center justify-center h-full">
                   <NavLinksComponent links={navLinks} inSheet />
                    <Button asChild className="rounded-full transition-transform duration-300 hover:scale-110 font-bold mt-8 text-lg px-8 py-6">
