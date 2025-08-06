@@ -78,19 +78,19 @@ const taskDetails = {
 const socialLinks = [
     {
         name: 'GitHub',
-        icon: <Github className="h-6 w-6 text-primary" />,
+        icon: <Github className="h-6 w-6" />,
         href: 'https://github.com/adibxr',
         handle: 'Contribute on GitHub'
     },
     {
         name: 'Gmail',
-        icon: <Mail className="h-6 w-6 text-primary" />,
+        icon: <Mail className="h-6 w-6" />,
         href: 'mailto:admin@immortaladi.live',
         handle: 'Email Us'
     },
     {
         name: 'Twitter',
-        icon: <Twitter className="h-6 w-6 text-primary" />,
+        icon: <Twitter className="h-6 w-6" />,
         href: 'https://x.com/cybercrack',
         handle: 'Follow on X'
     },
@@ -139,7 +139,7 @@ export default function Home() {
     <div className="flex flex-col min-h-screen">
       <main className="flex-1">
         {/* Hero Section */}
-        <section className="relative py-24 md:py-32 lg:py-40 bg-background text-foreground">
+        <section className="relative pt-24 md:pt-32 lg:pt-40 text-foreground">
           <div className="container mx-auto px-4 text-center">
             <LogoIcon
               className="mx-auto h-20 w-20 text-primary"
@@ -198,7 +198,7 @@ export default function Home() {
         </section>
 
         {/* Task Details Section */}
-        <section id="task" className="py-20 md:py-28 bg-background">
+        <section id="task" className="py-20 md:py-28">
           <div className="container mx-auto px-4">
             <div className="max-w-5xl mx-auto">
               <div className="text-center mb-16">
@@ -281,29 +281,29 @@ export default function Home() {
         </section>
 
         {/* Connect Us Section */}
-        <section id="connect" className="py-20 md:py-28 bg-background">
+        <section id="connect" className="py-20 md:py-28">
           <div className="container mx-auto px-4">
             <div className="max-w-5xl mx-auto">
                 <h2 className="font-headline text-3xl md:text-4xl font-bold text-center mb-12">
                     Connect With Us
                 </h2>
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div className="flex justify-center items-center gap-4">
                     {socialLinks.map((link) => (
-                        <Link href={link.href} key={link.name} target="_blank" rel="noopener noreferrer">
-                            <Card  className="bg-card backdrop-blur-sm transition-all duration-300 hover:shadow-xl hover:-translate-y-1 border-2 border-transparent hover:border-primary/30 h-full">
-                                <CardContent className="p-4 flex flex-col items-center justify-center text-center h-full">
+                        <Link href={link.href} key={link.name} target="_blank" rel="noopener noreferrer" className="text-foreground/80 hover:text-primary transition-colors">
+                            <Card  className="bg-card backdrop-blur-sm transition-all duration-300 hover:shadow-xl hover:-translate-y-1 border-2 border-transparent hover:border-primary/30 w-24 h-24">
+                                <CardContent className="p-4 flex flex-col items-center justify-center text-center h-full gap-2">
                                     {link.icon}
-                                    <h3 className="mt-2 font-bold text-md">{link.name}</h3>
+                                    <h3 className="font-semibold text-xs">{link.name}</h3>
                                 </CardContent>
                             </Card>
                         </Link>
                     ))}
                      <Dialog open={isTeamDialogOpen} onOpenChange={setIsTeamDialogOpen}>
                       <DialogTrigger asChild>
-                         <Card className="cursor-pointer bg-card backdrop-blur-sm transition-all duration-300 hover:shadow-xl hover:-translate-y-1 border-2 border-transparent hover:border-primary/30 h-full">
-                            <CardContent className="p-4 flex flex-col items-center justify-center text-center h-full">
-                                <UserPlus className="h-6 w-6 text-primary" />
-                                <h3 className="mt-2 font-bold text-md">Join Our Team</h3>
+                         <Card className="cursor-pointer bg-card backdrop-blur-sm transition-all duration-300 hover:shadow-xl hover:-translate-y-1 border-2 border-transparent hover:border-primary/30 w-24 h-24 text-foreground/80 hover:text-primary">
+                            <CardContent className="p-4 flex flex-col items-center justify-center text-center h-full gap-2">
+                                <UserPlus className="h-6 w-6" />
+                                <h3 className="font-semibold text-xs">Join Our Team</h3>
                             </CardContent>
                         </Card>
                       </DialogTrigger>

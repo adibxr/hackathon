@@ -5,14 +5,12 @@ import Link from 'next/link';
 import { Button } from './ui/button';
 import { LogoIcon } from './icons';
 import { cn } from '@/lib/utils';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Menu } from 'lucide-react';
 import { Sheet, SheetContent, SheetTrigger } from './ui/sheet';
-import { useIsMobile } from '@/hooks/use-mobile';
 
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const isMobile = useIsMobile();
 
   const navLinks = [
     { href: '/#task', text: 'Task' },
@@ -20,18 +18,18 @@ export default function Header() {
     { href: '/rules', text: 'Rules' },
   ];
 
-  const NavLinksComponent = ({ links, inSheet }: { links: typeof navLinks, inSheet?: boolean }) => (
+  const NavLinksComponent = ({ inSheet }: { inSheet?: boolean }) => (
     <nav className={cn(
-        "flex items-center gap-1",
-        inSheet && "flex-col w-full mt-8"
+        "flex items-center gap-2",
+        inSheet && "flex-col w-full mt-8 gap-4"
       )}>
-        {links.map((link) => (
+        {navLinks.map((link) => (
           <Link 
             key={link.href} 
             href={link.href} 
             className={cn(
-              "font-headline uppercase tracking-wider font-medium text-foreground/70 hover:text-primary transition-colors px-3 py-1 rounded-full hover:bg-white/10",
-              inSheet ? "w-full text-center text-lg py-3" : "text-sm"
+              "font-medium text-foreground/80 hover:text-primary transition-colors px-4 py-2 rounded-full",
+              inSheet ? "w-full text-center text-lg" : "text-sm"
             )}
             onClick={() => inSheet && setIsMobileMenuOpen(false)}
           >
@@ -42,19 +40,18 @@ export default function Header() {
   );
 
   return (
-    <header className="sticky top-0 z-50 bg-background/95 backdrop-blur-sm">
-      <div className="container mx-auto px-4">
-        <div className="h-20 flex items-center justify-between">
+    <header className="sticky top-4 z-50 px-4">
+        <div className="container mx-auto h-20 flex items-center justify-between bg-background/50 backdrop-blur-lg rounded-full border border-white/10 shadow-lg px-6">
           <Link href="/" className="flex items-center gap-2 group">
             <LogoIcon className="h-8 w-8 text-primary transition-transform duration-300 group-hover:scale-110" />
-            <span className="font-headline text-xl font-bold tracking-tighter text-foreground group-hover:text-primary transition-colors">
-              Cyber Crackdown
-            </span>
           </Link>
           
           <div className="hidden md:flex items-center">
-            <NavLinksComponent links={navLinks} />
-            <Button asChild className="rounded-full transition-transform duration-300 hover:scale-110 font-bold ml-4 text-base px-6">
+            <NavLinksComponent />
+          </div>
+
+          <div className="hidden md:block">
+             <Button asChild className="rounded-full transition-transform duration-300 hover:scale-110 font-bold text-base px-6">
               <Link href="/register">
                 JOIN NOW!
               </Link>
@@ -71,7 +68,7 @@ export default function Header() {
               </SheetTrigger>
               <SheetContent side="right" className="bg-background/90 backdrop-blur-xl">
                 <div className="flex flex-col items-center justify-center h-full">
-                  <NavLinksComponent links={navLinks} inSheet />
+                  <NavLinksComponent inSheet />
                    <Button asChild className="rounded-full transition-transform duration-300 hover:scale-110 font-bold mt-8 text-lg px-8 py-6">
                     <Link href="/register">
                       JOIN NOW!
@@ -82,7 +79,6 @@ export default function Header() {
             </Sheet>
           </div>
         </div>
-      </div>
     </header>
   );
 }
