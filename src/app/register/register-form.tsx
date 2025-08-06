@@ -152,7 +152,7 @@ Thank you for registering!
         address: "Cyber Crackdown Hackathon"
       },
       theme: {
-        color: "#2563EB"
+        color: "#E43636"
       },
       modal: {
         ondismiss: function() {
@@ -180,7 +180,7 @@ Thank you for registering!
       <Card className="bg-card/80 backdrop-blur-sm shadow-lg border">
         <CardContent className="p-8 text-center">
           <CheckCircle className="mx-auto h-20 w-20 text-green-500 mb-4" />
-          <h2 className="font-headline text-3xl font-bold text-white mb-2">Congratulations!</h2>
+          <h2 className="font-headline text-3xl font-bold mb-2">Congratulations!</h2>
           <p className="text-foreground/80 mb-8">
             Your registration is complete. We're excited to have you on board!
           </p>
