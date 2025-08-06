@@ -13,9 +13,9 @@ export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const navLinks = [
-    { href: '/#task', text: 'Task' },
-    { href: '/#prizes', text: 'Prizes' },
-    { href: '/rules', text: 'Rules' },
+    { href: '/#task', text: 'TASK' },
+    { href: '/#prizes', text: 'PRIZES' },
+    { href: '/rules', text: 'RULES' },
   ];
 
   const NavLinksComponent = ({ inSheet }: { inSheet?: boolean }) => (
