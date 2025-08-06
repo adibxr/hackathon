@@ -78,19 +78,19 @@ const taskDetails = {
 const socialLinks = [
     {
         name: 'GitHub',
-        icon: <Github className="h-8 w-8 text-primary" />,
+        icon: <Github className="h-6 w-6 text-primary" />,
         href: 'https://github.com/adibxr',
         handle: 'Contribute on GitHub'
     },
     {
         name: 'Gmail',
-        icon: <Mail className="h-8 w-8 text-primary" />,
+        icon: <Mail className="h-6 w-6 text-primary" />,
         href: 'mailto:admin@immortaladi.live',
         handle: 'Email Us'
     },
     {
         name: 'Twitter',
-        icon: <Twitter className="h-8 w-8 text-primary" />,
+        icon: <Twitter className="h-6 w-6 text-primary" />,
         href: 'https://x.com/cybercrack',
         handle: 'Follow on X'
     },
@@ -287,25 +287,23 @@ export default function Home() {
                 <h2 className="font-headline text-3xl md:text-4xl font-bold text-center mb-12">
                     Connect With Us
                 </h2>
-                <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-2 mb-20">
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                     {socialLinks.map((link) => (
                         <Link href={link.href} key={link.name} target="_blank" rel="noopener noreferrer">
-                            <Card  className="bg-card/80 backdrop-blur-sm transition-all duration-300 hover:shadow-xl hover:-translate-y-2 border-2 border-transparent hover:border-primary/30 h-full">
-                                <CardContent className="p-6 flex flex-col items-center justify-center text-center h-full">
+                            <Card  className="bg-card/80 backdrop-blur-sm transition-all duration-300 hover:shadow-xl hover:-translate-y-1 border-2 border-transparent hover:border-primary/30 h-full">
+                                <CardContent className="p-4 flex flex-col items-center justify-center text-center h-full">
                                     {link.icon}
-                                    <h3 className="mt-4 font-bold text-xl">{link.name}</h3>
-                                    <p className="text-muted-foreground">{link.handle}</p>
+                                    <h3 className="mt-2 font-bold text-md">{link.name}</h3>
                                 </CardContent>
                             </Card>
                         </Link>
                     ))}
                      <Dialog open={isTeamDialogOpen} onOpenChange={setIsTeamDialogOpen}>
                       <DialogTrigger asChild>
-                         <Card className="cursor-pointer bg-card/80 backdrop-blur-sm transition-all duration-300 hover:shadow-xl hover:-translate-y-2 border-2 border-transparent hover:border-primary/30 h-full">
-                            <CardContent className="p-6 flex flex-col items-center justify-center text-center h-full">
-                                <UserPlus className="h-8 w-8 text-primary" />
-                                <h3 className="mt-4 font-bold text-xl">Join Our Team</h3>
-                                <p className="text-muted-foreground">Apply to be a part of our mission</p>
+                         <Card className="cursor-pointer bg-card/80 backdrop-blur-sm transition-all duration-300 hover:shadow-xl hover:-translate-y-1 border-2 border-transparent hover:border-primary/30 h-full">
+                            <CardContent className="p-4 flex flex-col items-center justify-center text-center h-full">
+                                <UserPlus className="h-6 w-6 text-primary" />
+                                <h3 className="mt-2 font-bold text-md">Join Our Team</h3>
                             </CardContent>
                         </Card>
                       </DialogTrigger>
