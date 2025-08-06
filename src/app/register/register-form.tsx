@@ -99,11 +99,11 @@ Thank you for registering!
   const handlePaymentAndSubmit = async (values: FormValues) => {
     setIsSubmitting(true);
     
-    const razorpayKey = 'rzp_live_2xmNfhEtDk3XKE';
+    const razorpayKey = 'rzp_test_2aCfz4j1Z5j3jZ'; // Replace with your actual Razorpay Key ID
 
     const options = {
       key: razorpayKey,
-      amount: 4900,
+      amount: 4900, // Amount in paise (49 INR)
       currency: "INR",
       name: "Cyber Crackdown",
       description: "Hackathon Registration Fee",
@@ -115,7 +115,7 @@ Thank you for registering!
             razorpay_payment_id: response.razorpay_payment_id,
           };
           
-          const formspreeResponse = await fetch('https://formspree.io/f/xrblabjk', {
+          const formspreeResponse = await fetch('https://formspree.io/f/xrblabjk', { // Replace with your Formspree endpoint
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
