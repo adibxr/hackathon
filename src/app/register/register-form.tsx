@@ -99,7 +99,7 @@ Thank you for registering!
   const handlePaymentAndSubmit = async (values: FormValues) => {
     setIsSubmitting(true);
     
-    const razorpayKey = 'rzp_test_2aCfz4j1Z5j3jZ'; // Replace with your actual Razorpay Key ID
+    const razorpayKey = 'rzp_live_qHZcR03E9hVO1Q'; // Replace with your actual Razorpay Key ID
 
     const options = {
       key: razorpayKey,
