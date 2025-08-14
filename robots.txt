@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://hack.networthwars.com/sitemap.xml
